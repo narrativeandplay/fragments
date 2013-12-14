@@ -8,7 +8,7 @@ gem 'pg'
 
 group :development, :test do
   # Use RSpec for testing
-  gem 'rspec-rails', '~> 2.14.0'
+  gem 'rspec-rails', '~> 2.14'
 
   # Use Guard to run tests automatically
   gem 'guard-rspec', '~> 4.0'
@@ -50,6 +50,9 @@ group :development do
   gem 'better_errors'
 end
 
+# Forced update of sprockets-rails
+gem 'sprockets-rails', '~> 2.0.1'
+
 # Use Foundation as front-end framework
 gem 'foundation-rails', '~> 5.0'
 gem 'foundation_rails_helper', github: 'benedictleejh/foundation_rails_helper' # Form styling in Foundation
@@ -69,6 +72,9 @@ gem 'ckeditor', github: 'galetahub/ckeditor'
 
 # Use gon to get rails variables in JS
 gem 'gon', '~> 4.1'
+
+# Use PluggableJs to execute per page JS
+gem "pluggable_js", "~> 1.0"
 
 # Use browser to detect browser version
 gem 'browser', '~> 0.2'
