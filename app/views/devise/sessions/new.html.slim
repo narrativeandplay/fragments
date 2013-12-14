@@ -1,0 +1,13 @@
+.large-6.push-3.columns
+  h2 Sign in
+  = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+    div
+      = f.text_field :username, :autofocus => true
+    div
+      = f.password_field :password
+    - if devise_mapping.rememberable?
+      div
+        = f.check_box :remember_me, label: " Remember me"
+    div
+      = f.submit "Sign in"
+  = render "devise/shared/links"
