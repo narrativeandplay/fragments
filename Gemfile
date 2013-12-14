@@ -26,14 +26,14 @@ group :test do
   # Uncomment/Comment out the lines for the gem(s) as needed
 
   # OSX
-  # gem 'growl', '1.0.3'
+  # gem 'growl', '~> 1.0'
 
   # Linux
   gem 'libnotify', '~> 0.8'
 
   # Windows
-  # gem 'rb-notifu', '0.0.4'
-  # gem 'win32console', '1.3.2'
+  # gem 'rb-notifu', '~> 0.0'
+  # gem 'win32console', '~> 1.3'
 
   # Use FactoryGirl for generating data for testing
   gem 'factory_girl_rails', '~> 4.2'
