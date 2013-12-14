@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Fragments::Application.config.secret_key_base = 'bbb40552a3cf900622e0be720763fbad3728b2e5e34d4463e51156cd21ed642e6a8fd85cee0205bcd2eadad43cf2d96bbd334eab9dd955a8bebb4652e92e3d51'
+Fragments::Application.config.secret_key_base = Fragments.secret_key('.secret')
