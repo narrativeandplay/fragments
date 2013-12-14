@@ -16,10 +16,12 @@ html
       == render 'layouts/navigation'
     .row
       main[role="main"]
-          == render 'layouts/messages'
+        == render 'layouts/messages'
           
-          == yield
-          
-      == render 'layouts/footer'
+        == yield
+    
+    .row
+      footer          
+        == render 'layouts/footer'
 
   == render 'layouts/ie_warning'
