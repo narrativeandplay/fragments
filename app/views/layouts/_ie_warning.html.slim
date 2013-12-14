@@ -1,0 +1,60 @@
+#ie-warning.reveal-modal[data-reveal]
+  h4 Hi, Internet Explorer user
+  p
+    ' Please note that Internet Explorer is an unsupported browser, and some features
+    ' , including basic features, may not work on your browser. Thus, 
+    ' in order to get the best experience while using Fragments, please 
+    | consider downloading and using one of the following browsers.
+  
+  .row
+    a.large-4.columns.text-center href="http://www.google.com/chrome"
+      .pic
+        = image_tag("chrome_icon.svg", size: "100")
+      br
+      h6 Chrome
+    a.large-4.columns.text-center href="http://www.mozilla.org/firefox"
+      .pic
+        = image_tag("firefox_icon.png", size: "100")
+      br
+      h6 Firefox
+    a.large-4.columns.text-center href="http://www.opera.com/"
+      .pic
+        = image_tag("opera_icon.png", size: "100")
+      br
+      h6 Opera
+  
+  br
+  br
+      
+  p
+    ' Click 
+    = link_to "here", '#', data: { 'reveal-id' => 'ie-warning-explanation' }
+    |  for an explanation of why Internet Explorer is not supported.
+    
+  a.close-reveal-modal
+    | ×
+
+#ie-warning-explanation.reveal-modal[data-reveal]
+  p
+    ' Here, at Fragments, we made a conscious decision to not support
+    ' Internet Explorer in any form whatsoever. Yes, this includes the
+    ' latest version of IE (IE11 at the time of writing).
+    ' Rather than wasting our limited time in making our site work in
+    ' browsers that don't follow standards, we have instead chosen to
+    ' focus on making our product the best that it can be. While this site
+    ' makes use of frameworks that currently support IE in some form, we do not intend
+    ' to provide support for IE. This means that if at some point in the
+    ' future, should IE9/IE10/IE11 support be dropped from the frameworks we use, we
+    | will not attempt to backport it to those browsers.
+    
+  a.close-reveal-modal data-reveal-id="ie-warning"
+    | ×
+
+- if browser.ie?
+      javascript:
+        $("#ie-warning").foundation('reveal', 'open');
+        
+javascript:
+  $("#ie-warning-explanation").on("closed", function() {
+    $("#ie-warning").foundation("reveal", "open");
+  });
