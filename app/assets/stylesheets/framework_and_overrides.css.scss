@@ -71,3 +71,8 @@ footer {
 .alert-box .fi-x{
   padding-top: 0.15rem;
 }
+
+// Add padding after gravatar image if in topbar
+.top-bar .gravatar {
+  padding-right: 0.6rem;
+}
