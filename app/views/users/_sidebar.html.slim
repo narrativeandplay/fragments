@@ -1,0 +1,7 @@
+aside
+  div
+    = gravatar_for(@user, size: 100)
+  h3
+    | Joined
+    br
+    | #{@user.created_at.strftime('%a, %e %b %Y')}

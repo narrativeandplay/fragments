@@ -1,0 +1,11 @@
+dl.tabs[data-tabs]
+  dd.active
+    a[href="#profile"]
+      | Profile
+      
+.tabs-content
+  #profile.active.content
+    h4
+      = "Email: #{@user.email}"
+      
+    a.small.radius.button[href=edit_user_registration_path] Edit Profile
