@@ -47,3 +47,27 @@ footer {
     }
   }
 }
+
+// CSS styling for devise errors
+#error_explanation {
+  @extend .panel;
+  @extend .radius;
+  @extend .alert-box;
+  
+  background-color: $alert-color;
+  
+  h2 {
+    color: $alert-font-color;
+    font-size: 1.1rem;
+  }
+  
+  ul {
+    font-size: $alert-font-size;
+    padding-left: 1rem;
+  }
+}
+
+// Ensure close button is in the middle of the alert box
+.alert-box .fi-x{
+  padding-top: 0.15rem;
+}

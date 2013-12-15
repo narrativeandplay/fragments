@@ -57,6 +57,7 @@ end
 # Use Foundation as front-end framework
 gem 'foundation-rails', '~> 5.0'
 gem 'foundation_rails_helper', github: 'benedictleejh/foundation_rails_helper' # Form styling in Foundation
+gem 'foundation-icons-sass-rails' # Foundation Icons font
 
 # Use Slim (http://slim-lang.com) as the rendering engine
 # slim-rails is used for automatic view generation
