@@ -14,4 +14,10 @@ class User < ActiveRecord::Base
       where(conditions).first
     end
   end
+  
+  def clear_whitespace
+    self.username.delete!(' ')
+  end
+
+  before_validation :clear_whitespace
 end
