@@ -16,6 +16,10 @@ group :development, :test do
 
   # Use Rack-Insight for debugging
   #gem 'rack-insight', '0.5.27'
+
+  # Use spring as application preloader
+  gem 'spring'
+  gem "spring-commands-rspec" # Spring commands for rpsec
 end
 
 group :test do
@@ -50,16 +54,17 @@ group :development do
   gem 'better_errors'
 end
 
-# Forced update of sprockets-rails
-gem 'sprockets-rails', '~> 2.0.1'
-
 # Use Foundation as front-end framework
 gem 'foundation-rails', '~> 5.0'
 gem 'foundation_rails_helper', github: 'benedictleejh/foundation_rails_helper' # Form styling in Foundation
+gem 'foundation-icons-sass-rails' # Foundation Icons font
 
 # Use Slim (http://slim-lang.com) as the rendering engine
 # slim-rails is used for automatic view generation
 gem 'slim-rails', '~> 2.0'
+
+# Forced update of sprockets-rails
+gem 'sprockets-rails', '~> 2.0.1'
 
 # Use Ancestry for modelling tree data
 gem 'ancestry', '~> 2.0'
