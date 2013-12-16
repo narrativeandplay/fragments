@@ -8,12 +8,6 @@ GIT
       railties (>= 4.0)
 
 GIT
-  remote: git://github.com/benedictleejh/rails_layout.git
-  revision: 6c7f10860d50be4c06c9fad029b3f8b3f4527eb8
-  specs:
-    rails_layout (0.5.6)
-
-GIT
   remote: git://github.com/galetahub/ckeditor.git
   revision: 077827e013901f315a6a1ca9cc7ac2af05acc099
   specs:
@@ -162,6 +156,7 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.0.2)
       sprockets-rails (~> 2.0.0)
+    rails_layout (0.5.8)
     railties (4.0.2)
       actionpack (= 4.0.2)
       activesupport (= 4.0.2)
@@ -270,7 +265,7 @@ DEPENDENCIES
   pluggable_js (~> 1.0)
   pry-rails
   rails (= 4.0.2)
-  rails_layout!
+  rails_layout
   rb-readline
   rspec-rails (~> 2.14)
   sass-rails (~> 4.0.0)

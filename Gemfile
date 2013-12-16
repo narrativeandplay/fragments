@@ -45,7 +45,7 @@ end
 
 group :development do
   # Setup basic application layout
-  gem 'rails_layout', github: 'benedictleejh/rails_layout'
+  gem 'rails_layout'
   
   # Use pry as rails console
   gem 'pry-rails'
