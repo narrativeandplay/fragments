@@ -11,6 +11,7 @@ describe Story do
   it { should respond_to(:title) }
   it { should respond_to(:creator) }
   
+  it { should respond_to(:fragments) }
   
   its(:creator) { should eq user }
   

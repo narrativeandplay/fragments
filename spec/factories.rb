@@ -10,4 +10,11 @@ FactoryGirl.define do
     sequence(:title) { |n| "Story #{n}" }
     creator
   end
+  
+  factory :fragment, aliases: [:parent] do
+    content "Lorem Ipsum"
+    author
+    story
+    parent nil
+  end
 end

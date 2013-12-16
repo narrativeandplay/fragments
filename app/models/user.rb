@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :validatable
   
   has_many :stories, foreign_key: :creator_id
+  has_many :fragments, foreign_key: :author_id
+  
   validates :username, presence: true, length: { minimum: 2 }, uniqueness: { case_sensitive: false }
 
   before_validation :clear_whitespace

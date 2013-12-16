@@ -13,6 +13,7 @@ describe User do
   it { should respond_to(:password_confirmation) }
   
   it { should respond_to(:stories) }
+  it { should respond_to(:fragments) }
 
   it { should be_valid }
 
