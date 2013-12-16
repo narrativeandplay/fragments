@@ -63,8 +63,8 @@ gem 'foundation-icons-sass-rails' # Foundation Icons font
 # slim-rails is used for automatic view generation
 gem 'slim-rails', '~> 2.0'
 
-# Forced update of sprockets-rails
-gem 'sprockets-rails', '~> 2.0.1'
+# Fix dependency resolution errors between sprockets-rails and slim
+gem 'tilt', '1.4.1'
 
 # Use Ancestry for modelling tree data
 gem 'ancestry', '~> 2.0'
