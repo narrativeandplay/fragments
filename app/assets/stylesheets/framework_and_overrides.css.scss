@@ -74,5 +74,6 @@ footer {
 
 // Add padding after gravatar image if in topbar
 .top-bar .gravatar {
+  @include box-sizing(content-box);
   padding-right: 0.6rem;
 }
