@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: stories
+#
+#  id         :integer          not null, primary key
+#  title      :string(255)
+#  creator_id :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 require 'spec_helper'
 
 describe Story do
@@ -12,6 +23,7 @@ describe Story do
   it { should respond_to(:creator) }
   
   it { should respond_to(:fragments) }
+  it { should respond_to(:authors) }
   
   its(:creator) { should eq user }
   

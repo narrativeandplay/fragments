@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: fragments
+#
+#  id         :integer          not null, primary key
+#  content    :text
+#  author_id  :integer
+#  story_id   :integer
+#  ancestry   :text
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 require 'spec_helper'
 
 describe Fragment do
