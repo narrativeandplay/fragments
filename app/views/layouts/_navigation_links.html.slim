@@ -1,6 +1,6 @@
 / add navigation links to this file
 li = link_to 'Home', root_path
-li = link_to 'Browse', '#'
+li = link_to 'Browse', stories_path
 - if user_signed_in?
   li.has-dropdown.not-click
     a[href="#" ]
