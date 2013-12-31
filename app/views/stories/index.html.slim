@@ -1,4 +1,11 @@
 h1 Stories
+.right
+  - if current_user
+    a.button.small href=new_story_url
+      | New Story
+  - else
+    a.button.small href='#' data-reveal-id='register-login'
+      | New Story
 - @stories.each do |story|
   .large-12.columns.story-list-item
     h4 = link_to story.title, story_path(story)
@@ -12,3 +19,5 @@ h1 Stories
       li = "Last updated: #{story.updated_at.to_date}"
   - if story != @stories.last
     hr
+      
+== render 'shared/register_or_login'
