@@ -15,7 +15,7 @@ require 'securerandom'
 Bundler.require(:default, Rails.env)
 
 module Fragments
-  ISSUE_TRACKER_URL = "https://bitbucket.org/benedictleejh/fragments/issues"
+  ISSUE_TRACKER_URL = "https://github.com/benedictleejh/fragments/issues"
 
   def self.secret_key(filename)
     key_file = Rails.root.join(filename)
