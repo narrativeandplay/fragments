@@ -1,0 +1,10 @@
+h1 New Story
+
+= form_for @story do |f|
+  == render 'new_story_errors'
+  = f.text_field :title
+  = f.fields_for :fragment, @fragment do |p|
+    = p.label :content
+    = p.cktext_area :content, ckeditor: { toolbar: editor_toolbar, removePlugins: 'elementspath', skin: 'kama' }
+  br
+  = f.submit

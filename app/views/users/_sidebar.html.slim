@@ -1,0 +1,7 @@
+aside.text-center
+  #profile-image
+    = gravatar_for(@user, size: 100)
+  h4
+    | Joined
+    br
+    | #{@user.created_at.strftime('%a, %e %b %Y')}

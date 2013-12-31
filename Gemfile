@@ -8,14 +8,19 @@ gem 'pg'
 
 group :development, :test do
   # Use RSpec for testing
-  gem 'rspec-rails', '~> 2.14.0'
+  gem 'rspec-rails', '~> 2.14'
 
   # Use Guard to run tests automatically
   gem 'guard-rspec', '~> 4.0'
   gem 'rb-readline', require: 'readline' # Use rb-readline to deal with locked string errors in guard, require is for rails console to work properly
+  gem 'guard-rails' # For auto restarting the server
 
   # Use Rack-Insight for debugging
   #gem 'rack-insight', '0.5.27'
+
+  # Use spring as application preloader
+  gem 'spring'
+  gem "spring-commands-rspec" # Spring commands for rpsec
 end
 
 group :test do
@@ -41,34 +46,44 @@ end
 
 group :development do
   # Setup basic application layout
-  gem 'rails_layout', github: 'benedictleejh/rails_layout'
+  gem 'rails_layout'
   
   # Use pry as rails console
   gem 'pry-rails'
   
   # More detailed errors
   gem 'better_errors'
+  gem 'binding_of_caller' # For interactive console in page when errors occur
+  
+  gem 'annotate'
 end
 
 # Use Foundation as front-end framework
 gem 'foundation-rails', '~> 5.0'
 gem 'foundation_rails_helper', github: 'benedictleejh/foundation_rails_helper' # Form styling in Foundation
+gem 'foundation-icons-sass-rails' # Foundation Icons font
 
 # Use Slim (http://slim-lang.com) as the rendering engine
 # slim-rails is used for automatic view generation
 gem 'slim-rails', '~> 2.0'
 
+# Fix dependency resolution errors between sprockets-rails and slim
+gem 'tilt', '1.4.1'
+
 # Use Ancestry for modelling tree data
-gem 'ancestry', '~> 2.0'
+gem 'ancestry', github: 'stefankroes/ancestry'
 
 # Use d3-rails for data visualisation (tree)
 gem 'd3-rails', '~> 3.3'
 
 # Use ckeditor for rich text editing
-gem 'ckeditor', github: 'galetahub/ckeditor'
+gem 'ckeditor', '~> 4.0'
 
 # Use gon to get rails variables in JS
 gem 'gon', '~> 4.1'
+
+# Use PluggableJs to execute per page JS
+gem "pluggable_js", "~> 2.0"
 
 # Use browser to detect browser version
 gem 'browser', '~> 0.2'

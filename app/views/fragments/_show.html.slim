@@ -1,0 +1,8 @@
+aside.right-off-canvas-menu
+  .row
+    .left
+      h5#author
+    .right#continue
+      = button_tag "Continue story from here", class: 'tiny', data: { 'reveal-id' => (current_user)? "new-fragment-form" : "register-login" }
+  .row
+    #fragment-content

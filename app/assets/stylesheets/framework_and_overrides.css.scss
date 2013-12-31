@@ -1,48 +1,79 @@
 // import the CSS framework
 @import "foundation_and_overrides";
 
-// override for the 'Home' navigation link
-.top-bar .name {
-  font-size: rem-calc(13);
-  line-height: 45px; }
-.top-bar .name a {
-  font-weight: normal;
-  color: white;
-  padding: 0 15px; }
+// Variables
 
-// THESE ARE EXAMPLES YOU CAN MODIFY
-// create mixins using Foundation classes
-@mixin twelve-columns {
-  @extend .small-12;
-  @extend .columns;
+$greyDarker: #222;
+$greyDark: #333;
+$grey: #555;
+$greyLight: #999;
+$greyMediumLight: #eaeaea;
+$greyLighter: #eee;
+
+$blue: #049cdb;
+$green: #46a546;
+$maroon: #9d261d;
+$yellow: #ffc40d;
+$orange: #f89406;
+$pink: #c3325f;
+$purple: #7a43b6;
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid $greyMediumLight;
+  color: $greyLight;
+
+  a {
+    color: $grey;
+
+    &:hover {
+      color: $greyDarker;
+    }
   }
-@mixin six-columns-centered {
-  @extend .small-6;
-  @extend .columns;
-  @extend .text-center;
+
+  small {
+    float: left;
   }
-// create your own classes
-// to make views framework-neutral
-.column {
-  @include six-columns-centered;
+
+  ul {
+    float: right;
+    list-style: none;
+
+    li {
+      float: left;
+      margin-left: 10px;
+      font-size: 12px;
+    }
   }
-.form {
-  @include grid-column(6);
-  }
-.form-centered {
-  @include six-columns-centered;
-  }
-.submit {
-  @extend .button;
+}
+
+// CSS styling for devise errors
+#error_explanation {
+  @extend .panel;
   @extend .radius;
+  @extend .alert-box;
+  
+  background-color: $alert-color;
+  
+  h2 {
+    color: $alert-font-color;
+    font-size: 1.1rem;
   }
-// apply styles to HTML elements
-// to make views framework-neutral
-main {
-  @include twelve-columns;
-  background-color: #eee;
+  
+  ul {
+    font-size: $alert-font-size;
+    padding-left: 1rem;
   }
-section {
-  @extend .row;
-  margin-top: 20px;
-  }
+}
+
+// Ensure close button is in the middle of the alert box
+.alert-box .fi-x{
+  padding-top: 0.15rem;
+}
+
+// Add padding after gravatar image if in topbar
+.top-bar .gravatar {
+  @include box-sizing(content-box);
+  padding-right: 0.6rem;
+}

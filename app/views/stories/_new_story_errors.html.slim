@@ -1,0 +1,8 @@
+- if @story.errors.any?
+  #error_explanation
+    h2 A new story could not be created due to the following errors:
+    ul
+      - @story.errors.messages.each do |key, msgs|
+        - msg_key = key.to_s.split('.').map { |str| str.singularize }.join(' ').humanize
+        - msgs.each do |msg|
+          li = "#{msg_key} #{msg}"
