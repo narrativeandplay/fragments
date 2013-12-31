@@ -45,4 +45,7 @@ RSpec.configure do |config|
   config.before(:all) do
     FactoryGirl.reload
   end
+
+  # Include devise test helpers
+  config.include Devise::TestHelpers, :type => :controller
 end
