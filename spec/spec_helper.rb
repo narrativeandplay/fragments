@@ -2,7 +2,7 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-# require 'rspec/autorun' # Comment out to prevent specs from running twice in Zeus
+require 'rspec/autorun' # Comment out to prevent specs from running twice in Zeus
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -41,4 +41,11 @@ RSpec.configure do |config|
   config.order = "random"
 
   config.include Capybara::DSL
+
+  config.before(:all) do
+    FactoryGirl.reload
+  end
+
+  # Include devise test helpers
+  config.include Devise::TestHelpers, :type => :controller
 end

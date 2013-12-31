@@ -10,7 +10,7 @@ html
     == javascript_include_tag "vendor/modernizr", "data-turbolinks-track" => true
     
     == csrf_meta_tags
-  body
+  body style="background: #eee;"
     == javascript_include_tag "application"
     == include_gon
     == javascript_pluggable_tag
@@ -20,7 +20,7 @@ html
       main[role="main"]
         == render 'layouts/messages'
           
-        == yield
+    == yield
     
     .row
       footer          

@@ -1,0 +1,42 @@
+// Place all the styles related to the stories controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "framework_and_overrides";
+
+#story-tree {
+  background-color: $greyLighter;
+}
+
+.story-list-item {
+  padding-bottom: 10px;
+  
+  &:hover {
+    background-color: lightgrey;
+  }
+  
+  ul {
+    list-style: none;
+    
+    li {
+      float: left;
+      margin-right: 30px;
+    }
+  }
+}
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 1.5px;
+}
+
+.circle {
+  fill: none;;
+  stroke-width: 1.5px;
+  stroke-opacity: 1.0;
+  
+  &:hover {
+    cursor: pointer;
+    fill-opacity: 0.9;
+  }
+}

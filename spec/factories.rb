@@ -5,4 +5,16 @@ FactoryGirl.define do
     password "foobar123"
     password_confirmation "foobar123"
   end
+  
+  factory :story do
+    sequence(:title) { |n| "Story #{n}" }
+    creator
+  end
+  
+  factory :fragment, aliases: [:parent] do
+    content "Lorem Ipsum"
+    author
+    story
+    parent nil
+  end
 end

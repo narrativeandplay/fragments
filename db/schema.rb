@@ -11,10 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131214101450) do
+ActiveRecord::Schema.define(version: 20131216133345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "fragments", force: true do |t|
+    t.text     "content"
+    t.integer  "author_id"
+    t.integer  "story_id"
+    t.text     "ancestry"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "fragments", ["author_id"], name: "index_fragments_on_author_id", using: :btree
+  add_index "fragments", ["story_id"], name: "index_fragments_on_story_id", using: :btree
+
+  create_table "stories", force: true do |t|
+    t.string   "title"
+    t.integer  "creator_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "stories", ["creator_id"], name: "index_stories_on_creator_id", using: :btree
+  add_index "stories", ["title"], name: "index_stories_on_title", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username",               default: "", null: false
