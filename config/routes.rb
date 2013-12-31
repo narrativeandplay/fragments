@@ -7,6 +7,9 @@ Fragments::Application.routes.draw do
   get 'contact' => 'static_pages#contact'
   
   resources :users, only: [:show]
+  resources :stories, only: [:index, :new, :create, :show] do
+    resources :fragments, only: [:show, :create]
+  end
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
