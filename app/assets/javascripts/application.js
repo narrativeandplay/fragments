@@ -18,6 +18,7 @@
 //= require ckeditor/init
 //= require d3
 //= require_tree .
+//= require modernizr
 
 $(function() {
   $(document).foundation();
