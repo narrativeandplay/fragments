@@ -1,4 +1,4 @@
-#ie-warning.reveal-modal[data-reveal]
+#ie-warning.reveal-modal.medium[data-reveal]
   h4 Hi, Internet Explorer user
   p
     ' Please note that Internet Explorer is an unsupported browser, and some features
@@ -26,7 +26,7 @@
   br
   br
       
-  p
+  /p
     ' Click 
     = link_to "here", '#', data: { 'reveal-id' => 'ie-warning-explanation' }
     |  for an explanation of why Internet Explorer is not supported.
@@ -34,7 +34,7 @@
   a.close-reveal-modal
     | ×
 
-#ie-warning-explanation.reveal-modal[data-reveal]
+#ie-warning-explanation.reveal-modal.medium[data-reveal]
   p
     ' Here, at Fragments, we made a conscious decision to not support
     ' Internet Explorer in any form whatsoever. Yes, this includes the
