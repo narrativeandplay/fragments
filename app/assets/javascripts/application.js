@@ -16,6 +16,7 @@
 //= require foundation
 //= require ckeditor/override
 //= require ckeditor/init
+//= require d3
 //= require_tree .
 
 $(function() {
