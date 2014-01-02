@@ -19,9 +19,12 @@ describe StoriesController do
   end
 
   describe "GET #new" do
-    before { get :new }
-
     context "when logged in" do
+      before do
+        sign_in user
+        get :new
+      end
+      
       it 'assigns a new Story to @story' do
         assigns(:story).should be_a_new(Story)
         assigns(:story).should_not be_changed
@@ -39,6 +42,7 @@ describe StoriesController do
 
     describe "when not logged in" do
       it 'redirects to the login page' do
+        get :new
         response.should redirect_to new_user_session_url
       end
     end
