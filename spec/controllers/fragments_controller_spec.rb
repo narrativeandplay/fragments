@@ -6,7 +6,6 @@ describe FragmentsController do
   let!(:fragment) { FactoryGirl.create(:fragment, story: story, author: user) }
   
   before do
-    sign_in user
     request.env["HTTP_ACCEPT"] = 'application/json'
   end
   
@@ -27,27 +26,44 @@ describe FragmentsController do
   describe "POST #create" do
     let(:fragment_attributes) { FactoryGirl.attributes_for(:fragment, story: story, parent: fragment, author: user) }
 
-    context "with valid attributes" do
-      it 'creates a new fragment' do
-        expect {
-          post :create, story_id: story, fragment: fragment_attributes
-        }.to change(Fragment, :count).by(1)
-      end
+    context "when logged in" do
+      before { sign_in user }
       
-      it 'redirects to the story the fragment is created for' do
-        post :create, story_id: story, fragment: fragment_attributes
-        Rails.logger.debug response.body.inspect
-        response.body.should include 'window.location'
+      context "with valid attributes" do
+        it 'creates a new fragment' do
+          expect {
+            post :create, story_id: story, fragment: fragment_attributes
+          }.to change(Fragment, :count).by(1)
+        end
+
+        it 'redirects to the story the fragment is created for' do
+          post :create, story_id: story, fragment: fragment_attributes
+          Rails.logger.debug response.body.inspect
+          response.body.should include "window.location = '#{story_url story}'"
+        end
+      end
+
+      context "with invalid attributes" do
+        before { fragment_attributes[:content] = '   ' }
+
+        it 'does not save the new fragment' do
+          expect {
+            post :create, story_id: fragment.story, fragment: fragment_attributes
+          }.not_to change(Fragment, :count)
+        end
       end
     end
 
-    context "with invalid attributes" do
-      before { fragment_attributes[:content] = '   ' }
-      
+    describe "when not logged in" do
       it 'does not save the new fragment' do
         expect {
           post :create, story_id: fragment.story, fragment: fragment_attributes
         }.not_to change(Fragment, :count)
+      end
+      
+      it 'redirects to the login page' do
+        post :create, story_id: story, fragment: fragment_attributes
+        response.body.should include "window.location = '#{new_user_session_url}'"
       end
     end
   end

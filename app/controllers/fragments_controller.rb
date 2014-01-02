@@ -1,6 +1,8 @@
 class FragmentsController < ApplicationController
   respond_to :json, :js
   
+  before_action :check_login, only: [:create]
+  
   def show
     @fragment = Fragment.find(params[:id])
     
@@ -22,5 +24,9 @@ class FragmentsController < ApplicationController
   private
   def fragment_params
     params.require(:fragment).permit(:content, :parent)
+  end
+  
+  def check_login
+    render js: "window.location = '#{new_user_session_url}'" unless current_user
   end
 end
