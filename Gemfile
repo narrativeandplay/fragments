@@ -26,6 +26,9 @@ end
 group :test do
   gem 'selenium-webdriver', '~> 2.35'
   gem 'capybara', '~> 2.1'
+  
+  # Use launchy to auto open capybara pages for debugging
+  gem 'launchy'
 
   # Gems needed for Guard on various platforms
   # Uncomment/Comment out the lines for the gem(s) as needed
