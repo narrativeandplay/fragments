@@ -3,6 +3,8 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 window['stories#show'] = (data) ->
+  lighterGrey = '#eee'
+  $(document.body).css('background', lighterGrey)
   $('#error_explanation').hide()
   
   radius = 10

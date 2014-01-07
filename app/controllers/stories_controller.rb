@@ -15,8 +15,6 @@ class StoriesController < ApplicationController
     @fragment =  @story.fragments.new
     
     gon.fragments = add_author_name(@story.fragments.arrange_serializable(order: :created_at).first)
-    
-    render layout: 'story'
   end
 
   def create
