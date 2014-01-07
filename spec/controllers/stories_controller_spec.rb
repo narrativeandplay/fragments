@@ -86,7 +86,7 @@ describe StoriesController do
 
         it 'redirects to the new story' do
           post :create, story: story_attributes.merge(fragment: fragment_attributes)
-          response.should redirect_to Story.last
+          response.should redirect_to assigns(:story)
         end
       end
 
