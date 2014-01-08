@@ -85,6 +85,9 @@ gem 'ckeditor', '~> 4.0'
 # Use gon to get rails variables in JS
 gem 'gon', '~> 4.1'
 
+# Use JsRoutes for named routes in JS
+gem 'js-routes', '~> 0.9'
+
 # Use PluggableJs to execute per page JS
 gem "pluggable_js", "~> 2.0"
 
