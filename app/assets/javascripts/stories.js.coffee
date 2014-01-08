@@ -39,9 +39,15 @@ window['stories#show'] = (data) ->
   
   
   $('.circle').click( ->
-    $('#fragment-content').empty().append($(this).data('fragmentData').content)
-    $('#fragment_parent').val($(this).data('fragmentData').id)
-    $('#author').empty().append("<h5>Author: #{$(this).data('fragmentData').author_name}</h5>")
+    $.ajax(
+      url: Routes.story_fragment_path($(this).data('fragmentData').story_id, $(this).data('fragmentData').id)
+      success: (data) ->
+        $('#fragment-content').empty().append(data.content)
+        $('#fragment_parent').val(data.id)
+        $('#author').empty().append("<h5>Author: #{data.author_name}</h5>")
+      error: (xhr, status, thrownError) ->
+        alert(xhr.responseText, status, thrownError);
+    )
   )
   
   $('#new_fragment').on('ajax:error', (event, xhr, status, error) ->

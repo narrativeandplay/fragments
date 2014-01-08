@@ -19,7 +19,7 @@ describe FragmentsController do
     end
     
     it 'returns a JSON object of the fragment' do
-      response.body.should eq fragment.to_json
+      response.body.should eq fragment.as_json.merge(author_name: fragment.author.username).to_json
     end
   end
 
