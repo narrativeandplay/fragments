@@ -5,7 +5,6 @@
 window['stories#show'] = (data) ->
   lighterGrey = '#eee'
   $(document.body).css('background', lighterGrey)
-  $('#error_explanation').hide()
   
   radius = 10
 
@@ -50,16 +49,6 @@ window['stories#show'] = (data) ->
     )
   )
   
-  $('#new_fragment').on('ajax:error', (event, xhr, status, error) ->
-    errors = $.parseJSON(xhr.responseText)
-    $('#error_explanation').empty().append("<h2>The fragment could not be saved due to the following errors: </h2>");
-    $('#error_explanation').append("<ul>");
-    for e in errors
-      $('#error_explanation').append("<li>#{e}</li>");
-    $('#error_explanation').append("</ul>");
-    $('#error_explanation').show()
-  )
-  
   $('#new-fragment-form').on('closed', ->
-    $('#error_explanation').hide()
+    $('#error_explanation').remove()
   )

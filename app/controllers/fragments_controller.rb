@@ -6,7 +6,7 @@ class FragmentsController < ApplicationController
   def show
     @fragment = Fragment.find(params[:id])
     
-    respond_with @fragment.as_json.merge(author_name: @fragment.author.username).to_json
+    respond_with @fragment.as_json.merge(author_name: @fragment.author.username)
   end
   
   def create
@@ -16,8 +16,6 @@ class FragmentsController < ApplicationController
     
     if @fragment.save
       render js: "window.location = '#{story_url(@story)}'"
-    else
-      render json: @fragment.errors.full_messages, status: :unprocessable_entity
     end
   end
   
