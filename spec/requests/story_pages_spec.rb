@@ -19,7 +19,7 @@ describe "StoryPages" do
   subject { page }
   
   describe "stories index" do
-    before { visit stories_url }
+    before { visit stories_path }
 
     it { should have_link("New Story") }
 
@@ -31,7 +31,7 @@ describe "StoryPages" do
       let!(:story1) { FactoryGirl.create(:story, creator: user) }
       let!(:fragment1) { FactoryGirl.create(:fragment, story: story1, author: user) }
 
-      before { visit stories_url }
+      before { visit stories_path }
 
       it { should have_content(story.title) }
       it { should have_content(story1.title) }
@@ -42,7 +42,7 @@ describe "StoryPages" do
       context "logged in" do
         before do
           login user
-          visit stories_url
+          visit stories_path
           click_link 'New Story'
         end
         
@@ -63,7 +63,7 @@ describe "StoryPages" do
       before do
         login user
         
-        visit new_story_url
+        visit new_story_path
       end
       
       it_behaves_like 'the new story form'
@@ -144,7 +144,7 @@ describe "StoryPages" do
     end
 
     context "logged out" do
-      before { visit new_story_url }
+      before { visit new_story_path }
       
       it { should have_selector('h2', text: 'Login') }
       it { should have_field('Username') }
@@ -152,9 +152,53 @@ describe "StoryPages" do
     end
   end
 
-  describe "viewing a story" do
-    before { visit story_url(story) }
+  describe "viewing a story", js: true do
+    before { visit story_path(story) }
     
     it { should have_selector('h2', story.title) }
+    it 'has the story tree' do
+      should have_selector('svg', count: story.fragments.count)
+    end
+
+    describe "viewing a fragment's content", js: true do
+      before do
+        find('.circle').click
+      end
+      
+      it { should have_content(fragment.content) }
+      it { should have_button 'Continue story from here' } 
+    end
+
+    describe "adding a new fragment" do
+      context "logged in" do
+        before do
+          login user
+          visit story_path(story)
+          find('.circle').click
+          click_button('Continue story from here')
+        end
+
+        it { should have_content 'Content' }
+        #it { should have_field 'fragment[content]' }
+        it { should have_content 'Author' }
+        it { should have_content user.username }
+        it { should_not have_selector('div#error_explanation') }
+
+        describe "with valid content" do
+          before 
+        end
+      end
+
+      context "logged out" do
+        before do
+          find('.circle').click
+          click_button('Continue story from here')
+        end
+
+        it { should_not have_content 'Content' }
+        it { should have_link('Register') }
+        it { should have_link('Login') }
+      end
+    end
   end
 end

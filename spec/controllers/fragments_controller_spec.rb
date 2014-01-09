@@ -24,7 +24,7 @@ describe FragmentsController do
   end
 
   describe "POST #create" do
-    let(:fragment_attributes) { FactoryGirl.attributes_for(:fragment, story: story, parent: fragment, author: user) }
+    let(:fragment_attributes) { FactoryGirl.attributes_for(:fragment, story: story, parent: fragment.id, author: user) }
 
     context "when logged in" do
       before { sign_in user }
@@ -38,7 +38,6 @@ describe FragmentsController do
 
         it 'redirects to the story the fragment is created for' do
           post :create, story_id: story, fragment: fragment_attributes
-          Rails.logger.debug response.body.inspect
           response.body.should include "window.location = '#{story_url story}'"
         end
       end
@@ -48,7 +47,7 @@ describe FragmentsController do
 
         it 'does not save the new fragment' do
           expect {
-            post :create, story_id: fragment.story, fragment: fragment_attributes
+            post :create, story_id: fragment.story, fragment: fragment_attributes, format: :js
           }.not_to change(Fragment, :count)
         end
       end
