@@ -27,6 +27,9 @@ group :test do
   gem 'selenium-webdriver', '~> 2.35'
   gem 'capybara', '~> 2.1'
   
+  # Use database_cleaner to clean database during javascript tests
+  gem 'database_cleaner', '~> 1.2'
+  
   # Use launchy to auto open capybara pages for debugging
   gem 'launchy'
 

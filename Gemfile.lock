@@ -78,6 +78,7 @@ GEM
     coffee-script-source (1.6.3)
     d3-rails (3.3.7)
       railties (>= 3.1)
+    database_cleaner (1.2.0)
     debug_inspector (0.0.2)
     devise (3.2.2)
       bcrypt-ruby (~> 3.0)
@@ -267,6 +268,7 @@ DEPENDENCIES
   ckeditor (~> 4.0)
   coffee-rails (~> 4.0.0)
   d3-rails (~> 3.3)
+  database_cleaner (~> 1.2)
   devise (~> 3.1)
   factory_girl_rails (~> 4.2)
   foundation-icons-sass-rails
