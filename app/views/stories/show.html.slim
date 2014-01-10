@@ -1,14 +1,14 @@
-.row
-  h2 = @story.title
-#story
-.off-canvas-wrap
-  .inner-wrap
-    == render 'fragments/show'
-    
-    #story-tree.text-center
-      a.exit-off-canvas
-
-- if current_user
-  == render 'fragments/new'
-- else
-  == render 'shared/register_or_login'
+h2 = @story.title
+- content_for :story
+  #story
+  .off-canvas-wrap
+    .inner-wrap
+      == render 'fragments/show'
+      
+      #story-tree.row.text-center
+        a.exit-off-canvas
+  
+  - if current_user
+    == render 'fragments/new'
+  - else
+    == render 'shared/register_or_login'

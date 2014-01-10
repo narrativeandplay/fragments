@@ -1,4 +1,6 @@
 class StoriesController < ApplicationController
+  before_action :check_logged_in, only: [:create, :new]
+  
   def index
     @stories = Story.all
   end
@@ -13,8 +15,6 @@ class StoriesController < ApplicationController
     @fragment =  @story.fragments.new
     
     gon.fragments = add_author_name(@story.fragments.arrange_serializable(order: :created_at).first)
-    
-    render layout: 'story'
   end
 
   def create
@@ -46,5 +46,9 @@ class StoriesController < ApplicationController
     end
     
     hash
+  end
+  
+  def check_logged_in
+    redirect_to new_user_session_url unless current_user
   end
 end

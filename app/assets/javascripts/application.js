@@ -17,6 +17,7 @@
 //= require ckeditor/override
 //= require ckeditor/init
 //= require d3
+//= require js-routes
 //= require_tree .
 
 $(function() {
