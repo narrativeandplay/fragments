@@ -65,7 +65,7 @@ group :development do
 end
 
 # Use Foundation as front-end framework
-gem 'foundation-rails', '~> 5.0'
+gem 'foundation-rails', github: 'mattmueller/foundation-rails' #Temp fix for being unable to include foundation JS in head until official fix comes out from Zurb
 gem 'foundation_rails_helper', github: 'benedictleejh/foundation_rails_helper' # Form styling in Foundation
 gem 'foundation-icons-sass-rails' # Foundation Icons font
 
