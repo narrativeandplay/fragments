@@ -19,5 +19,9 @@ h1 Stories
       li = "Last updated: #{story.updated_at.to_date}"
   - if story != @stories.last
     hr
+
+.large-12.columns
+  br
+  = paginate @stories
       
 == render 'shared/register_or_login'
