@@ -166,7 +166,8 @@ describe "StoryPages" do
       end
       
       it { should have_content(fragment.content) }
-      it { should have_button 'Continue story from here' } 
+      it { should have_link 'Read as prose' }
+      it { should have_link 'Continue story from here' } 
     end
 
     describe "adding a new fragment" do
@@ -175,7 +176,7 @@ describe "StoryPages" do
           login user
           visit story_path(story)
           find('.circle').click
-          click_button('Continue story from here')
+          click_link('Continue story from here')
         end
 
         it { should have_content 'Content' }
@@ -184,15 +185,17 @@ describe "StoryPages" do
         it { should have_content user.username }
         it { should_not have_selector('div#error_explanation') }
 
-        describe "with valid content" do
-          before 
+        describe "with invalid content" do
+          before { click_button "Create Fragment" }
+          
+          it { should have_selector('div#error_explanation') }
         end
       end
 
       context "logged out" do
         before do
           find('.circle').click
-          click_button('Continue story from here')
+          click_link('Continue story from here')
         end
 
         it { should_not have_content 'Content' }

@@ -8,6 +8,14 @@ GIT
       railties (>= 4.0)
 
 GIT
+  remote: git://github.com/mattmueller/foundation-rails.git
+  revision: effaea8efbfcc6ec17b553b45d1cc529bc7716e8
+  specs:
+    foundation-rails (5.0.2.0)
+      railties (>= 3.1.0)
+      sass (>= 3.2.0)
+
+GIT
   remote: git://github.com/stefankroes/ancestry.git
   revision: 1368853e5abb78baa55194a9b133d84ecbe96f39
   specs:
@@ -99,9 +107,6 @@ GEM
     foundation-icons-sass-rails (3.0.0)
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
-    foundation-rails (5.0.2.0)
-      railties (>= 3.1.0)
-      sass (>= 3.2.0)
     gon (4.1.1)
       actionpack (>= 2.3.0)
       json
@@ -272,7 +277,7 @@ DEPENDENCIES
   devise (~> 3.1)
   factory_girl_rails (~> 4.2)
   foundation-icons-sass-rails
-  foundation-rails (~> 5.0)
+  foundation-rails!
   foundation_rails_helper!
   gon (~> 4.1)
   guard-rails

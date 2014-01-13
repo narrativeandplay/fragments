@@ -22,7 +22,9 @@ window['stories#show'] = (data) ->
   
   link = svg.selectAll(".link").data(links).enter().append("path").attr("class", "link").attr("d", diagonal)
   
-  circle = svg.selectAll(".circle").data(nodes).enter().append("g").attr("class", "circle right-off-canvas-toggle").each( (d) -> $(this).data('fragment-data', d))
+  circle = svg.selectAll(".circle").data(nodes).enter().append("g").attr("class", "circle right-off-canvas-toggle")
+
+  circle.each( (d) -> $(this).data('fragment-data', d))
   
   el = circle.append("circle").attr("cx", (d) ->
     d.x
@@ -38,9 +40,12 @@ window['stories#show'] = (data) ->
   
   
   $('.circle').click( ->
+    story_id = $(this).data('fragment-data').story_id
+    fragment_id = $(this).data('fragment-data').id
     $.ajax(
-      url: Routes.story_fragment_path($(this).data('fragmentData').story_id, $(this).data('fragmentData').id)
+      url: Routes.story_fragment_path(story_id, fragment_id)
       success: (data) ->
+        $('#read-link').attr('href', Routes.story_fragment_read_path(story_id, fragment_id))
         $('#fragment-content').empty().append(data.content)
         $('#fragment_parent').val(data.id)
         $('#author').empty().append("<h5>Author: #{data.author_name}</h5>")

@@ -28,6 +28,14 @@ class StoriesController < ApplicationController
     end
   end
   
+  
+  def read
+    @story = Story.find(params[:story_id])
+    fragment = Fragment.find(params[:fragment_id])
+    
+    @fragments = fragment.path
+  end
+  
   private
   def story_params
     params.require(:story).permit(:title)
