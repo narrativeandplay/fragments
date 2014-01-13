@@ -132,6 +132,9 @@ GEM
     js-routes (0.9.6)
       rails (>= 3.2)
     json (1.8.1)
+    kaminari (0.15.0)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     launchy (2.4.2)
       addressable (~> 2.3)
     libnotify (0.8.2)
@@ -285,6 +288,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   js-routes (~> 0.9)
+  kaminari (~> 0.15)
   launchy
   libnotify (~> 0.8)
   pg
