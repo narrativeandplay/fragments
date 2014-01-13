@@ -73,6 +73,8 @@ gem 'foundation-icons-sass-rails' # Foundation Icons font
 # slim-rails is used for automatic view generation
 gem 'slim-rails', '~> 2.0'
 
+gem 'kaminari', '~> 0.15'
+
 # Fix dependency resolution errors between sprockets-rails and slim
 gem 'tilt', '1.4.1'
 
