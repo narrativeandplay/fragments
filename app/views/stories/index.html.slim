@@ -1,11 +1,7 @@
 h1 Stories
 .right
-  - if current_user
-    a.button.small href=new_story_url
-      | New Story
-  - else
-    a.button.small href='#' data-reveal-id='register-login'
-      | New Story
+  a.button.small*(current_user ? {'href' => new_story_url} : { 'data-reveal-id' => 'register-login'})
+    | New Story
 - @stories.each do |story|
   .large-12.columns.story-list-item
     h4 = link_to story.title, story_path(story)
