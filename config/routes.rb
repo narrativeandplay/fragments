@@ -8,7 +8,9 @@ Fragments::Application.routes.draw do
   
   resources :users, only: [:show]
   resources :stories, only: [:index, :new, :create, :show] do
-    resources :fragments, only: [:show, :create]
+    resources :fragments, only: [:show, :create] do
+      get 'read' => 'stories#read'
+    end
   end
   
   # The priority is based upon order of creation: first created -> highest priority.
