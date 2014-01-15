@@ -8,6 +8,8 @@ Fragments::Application.routes.draw do
   
   resources :users, only: [:show]
   resources :stories, only: [:index, :new, :create, :show] do
+    get 'page/:page', action: :index, on: :collection
+    
     resources :fragments, only: [:show, :create] do
       get 'read' => 'stories#read'
     end
