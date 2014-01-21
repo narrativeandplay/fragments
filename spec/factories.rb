@@ -17,4 +17,10 @@ FactoryGirl.define do
     story
     parent nil
   end
+  
+  factory :profile do
+    sequence(:pen_name) { |n| "Pen Name #{n}" }
+    description "Lorem Ipsum"
+    user
+  end
 end
