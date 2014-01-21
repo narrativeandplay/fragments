@@ -33,6 +33,10 @@ class User < ActiveRecord::Base
 
   before_validation :clear_whitespace
   before_save :make_profile
+  
+  def stories_contributed_to
+    Story.where(id: self.fragments.pluck(:story_id).uniq)
+  end
 
   private
   # Allow login using case insensitive username, but save case senstive username in DB
