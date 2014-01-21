@@ -24,7 +24,7 @@ describe "StoryPages" do
     it { should have_link("New Story") }
 
     context "with one story" do
-      it { should have_content(story.title)}
+      it { should have_content(story.title) }
     end
 
     context "with more than one story" do
