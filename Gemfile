@@ -88,7 +88,7 @@ gem 'd3-rails', '~> 3.3'
 gem 'ckeditor', '~> 4.0'
 
 # Use gon to get rails variables in JS
-gem 'gon', '~> 4.1'
+gem 'gon', '~> 5.0'
 
 # Use JsRoutes for named routes in JS
 gem 'js-routes', '~> 0.9'
