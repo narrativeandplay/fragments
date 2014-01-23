@@ -17,9 +17,14 @@
 //= require ckeditor/override
 //= require ckeditor/init
 //= require d3
+//= require js-routes
 //= require_tree .
 //= require modernizr
 
 $(function() {
   $(document).foundation();
 });
+
+$(document).on('page:load', function(){
+    $(document).foundation();
+})

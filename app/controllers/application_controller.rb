@@ -12,4 +12,9 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_in) << :email
     devise_parameter_sanitizer.for(:account_update) << :email
   end
+
+  private
+  def check_logged_in
+    redirect_to new_user_session_url unless current_user
+  end
 end

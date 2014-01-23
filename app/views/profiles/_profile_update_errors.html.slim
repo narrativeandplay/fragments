@@ -1,7 +1,7 @@
 - if form_object.errors.any?
   #error_explanation
     h2
-      | A new #{form_object.class.to_s.downcase} could not be created due to the following errors:
+      | Your #{form_object.class.to_s.downcase} could not be updated due to the following errors:
     ul
       - form_object.errors.full_messages.each do |msg|
         li = msg

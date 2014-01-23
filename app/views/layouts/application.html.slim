@@ -7,11 +7,10 @@ html
     title = title(yield(:title))
     meta name="description" content="#{content_for?(:description) ? yield(:description) : app_name.underscore.titleize}"
     == stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
-    /== javascript_include_tag "vendor/modernizr", "data-turbolinks-track" => true
-    
+    == javascript_include_tag "vendor/modernizr", "data-turbolinks-track" => true
+    == javascript_include_tag "application", "data-turbolinks-track" => true
     == csrf_meta_tags
   body
-    == javascript_include_tag "application"
     == include_gon
     == javascript_pluggable_tag
     header
@@ -21,6 +20,7 @@ html
         == render 'layouts/messages'
           
         == yield
+    == yield(:story)
     
     .row
       footer          
