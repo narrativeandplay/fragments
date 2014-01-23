@@ -32,7 +32,7 @@ dl.tabs[data-tab]
     == render partial: 'shared/story_list_item', locals: { stories: @user.stories }
   #stories-contributed-to.content
     - if @user.stories_contributed_to.count == 0
-          p
-            | #{is_current_user? ? "You have" : "This user has"} not contributed to any stories
+      p
+        | #{is_current_user? ? "You have" : "This user has"} not contributed to any stories
     == render partial: 'shared/story_list_item', locals: { stories: @user.stories_contributed_to }
     
