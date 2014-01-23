@@ -36,7 +36,7 @@ Fragments::Application.configure do
   config.assets.version = '1.0'
 
   # Compile assets in vendor
-  config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+  config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif *.css *.js)
 
   # Specifies the header that your server uses for sending files.
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for apache
