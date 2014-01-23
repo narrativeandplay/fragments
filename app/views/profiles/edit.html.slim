@@ -1,2 +1,8 @@
-h1 Profiles#edit
-p Find me in app/views/profiles/edit.html.slim
+.large-8.push-2.columns
+  h2 Edit Profile
+  = form_for @user.profile, url: user_profile_path(@user) do |f|
+    == render partial: 'profile_update_errors', locals: { form_object: @user.profile }
+    = f.text_field :pen_name
+    br
+    = f.text_area :description, label: "Describe Yourself"
+    = f.submit
