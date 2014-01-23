@@ -1,9 +1,11 @@
-h2 = @story.title
 - content_for :story
   #story
   .off-canvas-wrap
     .inner-wrap
       == render 'fragments/show'
+      
+      .row
+        h2 = @story.title
       
       #story-tree.row.text-center
         a.exit-off-canvas
