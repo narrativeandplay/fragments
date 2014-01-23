@@ -12,7 +12,7 @@ group :development, :test do
 
   # Use Guard to run tests automatically
   gem 'guard-rspec', '~> 4.0'
-  gem 'rb-readline', require: 'readline' # Use rb-readline to deal with locked string errors in guard, require is for rails console to work properly
+  gem 'rb-readline', require: 'readline' # Use rb-readline to deal with locked string errors in guard (using zeus), require is for rails console to work properly
   gem 'guard-rails' # For auto restarting the server
 
   # Use Rack-Insight for debugging
@@ -65,7 +65,7 @@ group :development do
 end
 
 # Use Foundation as front-end framework
-gem 'foundation-rails', github: 'mattmueller/foundation-rails' #Temp fix for being unable to include foundation JS in head until official fix comes out from Zurb
+gem 'foundation-rails', '~> 5.0'
 gem 'foundation_rails_helper', github: 'benedictleejh/foundation_rails_helper' # Form styling in Foundation
 gem 'foundation-icons-sass-rails' # Foundation Icons font
 
