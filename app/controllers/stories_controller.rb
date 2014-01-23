@@ -55,8 +55,4 @@ class StoriesController < ApplicationController
     
     hash
   end
-  
-  def check_logged_in
-    redirect_to new_user_session_url unless current_user
-  end
 end

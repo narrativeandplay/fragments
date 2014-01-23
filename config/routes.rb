@@ -6,8 +6,12 @@ Fragments::Application.routes.draw do
   get 'about' => 'static_pages#about'
   get 'contact' => 'static_pages#contact'
   
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    resource :profile, only: [:edit, :update]
+  end
   resources :stories, only: [:index, :new, :create, :show] do
+    get 'page/:page', action: :index, on: :collection
+    
     resources :fragments, only: [:show, :create] do
       get 'read' => 'stories#read'
     end

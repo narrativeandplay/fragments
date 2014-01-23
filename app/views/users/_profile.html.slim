@@ -1,11 +1,38 @@
-dl.tabs[data-tabs]
+dl.tabs[data-tab]
   dd.active
     a[href="#profile"]
       | Profile
+  dd
+    a[href="#stories-created" ]
+      | Stories Created
+  dd
+    a[href="#stories-contributed-to" ]
+      | Stories Contributed To
       
 .tabs-content
-  #profile.active.content
-    h4
-      = "Email: #{@user.email}"
-      
-    a.small.radius.button[href=edit_user_registration_path] Edit Profile
+  #profile.content.active
+    p
+      = @user.profile.description || default_description(@user)
+    - if is_current_user?
+      br
+      a.small.radius.button[href=edit_user_profile_path(@user)] Edit Profile
+    br
+    br
+    - if is_current_user?
+      h5 Login Information
+      p
+        = "Username: #{@user.username}"
+        br
+        = "Email: #{@user.email}"
+      a.small.radius.button[href=edit_user_registration_path] Edit Login Information
+  #stories-created.content
+    - if @user.stories.count == 0
+      p
+        | #{is_current_user? ? "You have" : "This user has"} not created any stories
+    == render partial: 'shared/story_list_item', locals: { stories: @user.stories }
+  #stories-contributed-to.content
+    - if @user.stories_contributed_to.count == 0
+      p
+        | #{is_current_user? ? "You have" : "This user has"} not contributed to any stories
+    == render partial: 'shared/story_list_item', locals: { stories: @user.stories_contributed_to }
+    

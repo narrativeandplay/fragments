@@ -1,5 +1,6 @@
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
+require 'active_support/inflector'
 
 guard :rspec, cmd: 'spring rspec', all_on_start: true, after_all_pass: false do
   watch(%r{^spec/.+_spec\.rb$})
@@ -17,6 +18,8 @@ guard :rspec, cmd: 'spring rspec', all_on_start: true, after_all_pass: false do
   # Capybara features specs
   watch(%r{^app/views/(.+)/.*\.(erb|haml|slim)$})     { |m| "spec/features/#{m[1]}_spec.rb" }
   watch(%r{^app/views/(.+)/.*\.(erb|haml|slim)$})     { |m| "spec/requests/#{m[1]}_spec.rb" }
+  watch(%r{^app/views/(.+)/.*\.(erb|haml|slim)$})     { |m| "spec/requests/#{m[1].singularize}_pages_spec.rb" }
+  watch(%r{^app/views/fragments/.*\.(erb|haml|slim)$})     { "spec/requests/story_pages_spec.rb" }
 
   # Turnip features and steps
   watch(%r{^spec/acceptance/(.+)\.feature$})

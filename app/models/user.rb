@@ -27,10 +27,18 @@ class User < ActiveRecord::Base
   has_many :stories, foreign_key: :creator_id
   has_many :fragments, foreign_key: :author_id
   
+  has_one :profile, inverse_of: :user
+  
   validates :username, presence: true, length: { minimum: 2 }, uniqueness: { case_sensitive: false }
 
   before_validation :clear_whitespace
+  before_save :make_profile
+  
+  def stories_contributed_to
+    Story.where(id: self.fragments.pluck(:story_id).uniq)
+  end
 
+  private
   # Allow login using case insensitive username, but save case senstive username in DB
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
@@ -43,5 +51,12 @@ class User < ActiveRecord::Base
   
   def clear_whitespace
     self.username.delete!(' ')
+  end
+  
+  def make_profile
+    if self.profile.nil?
+      self.create_profile
+      self.profile.pen_name = self.username
+    end
   end
 end

@@ -1,7 +1,22 @@
 aside.text-center
   #profile-image
     = gravatar_for(@user, size: 100)
-  h4
+  h5
     | Joined
     br
     | #{@user.created_at.strftime('%a, %e %b %Y')}
+    br
+    br
+    | Created
+    br
+    | #{@user.stories.count} stories
+    br
+    br
+    | Authored
+    br
+    | #{@user.fragments.count} fragments
+    br
+    br
+    | Contributed to
+    br
+    | #{@user.stories_contributed_to.count} stories
