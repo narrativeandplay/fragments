@@ -1,7 +1,6 @@
 #new-fragment-form.reveal-modal[data-reveal]
   h5 New Fragment
   = form_for [@story, @fragment], remote: true do |f|
-    #error_explanation
     = f.hidden_field :parent, value: 1
     = f.label :story, "Story: #{@story.title}"
     = f.label :author, "Author: #{current_user.username}"

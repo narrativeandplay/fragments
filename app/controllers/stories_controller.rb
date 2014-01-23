@@ -1,6 +1,8 @@
 class StoriesController < ApplicationController
+  before_action :check_logged_in, only: [:create, :new]
+  
   def index
-    @stories = Story.all
+    @stories = Story.page params[:page]
   end
   
   def new
@@ -13,8 +15,6 @@ class StoriesController < ApplicationController
     @fragment =  @story.fragments.new
     
     gon.fragments = add_author_name(@story.fragments.arrange_serializable(order: :created_at).first)
-    
-    render layout: 'story'
   end
 
   def create
@@ -26,6 +26,14 @@ class StoriesController < ApplicationController
     else
       render 'new'
     end
+  end
+  
+  
+  def read
+    @story = Story.find(params[:story_id])
+    fragment = Fragment.find(params[:fragment_id])
+    
+    @fragments = fragment.path
   end
   
   private

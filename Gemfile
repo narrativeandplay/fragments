@@ -12,7 +12,7 @@ group :development, :test do
 
   # Use Guard to run tests automatically
   gem 'guard-rspec', '~> 4.0'
-  gem 'rb-readline', require: 'readline' # Use rb-readline to deal with locked string errors in guard, require is for rails console to work properly
+  gem 'rb-readline', require: 'readline' # Use rb-readline to deal with locked string errors in guard (using zeus), require is for rails console to work properly
   gem 'guard-rails' # For auto restarting the server
 
   # Use Rack-Insight for debugging
@@ -26,6 +26,12 @@ end
 group :test do
   gem 'selenium-webdriver', '~> 2.35'
   gem 'capybara', '~> 2.1'
+  
+  # Use database_cleaner to clean database during javascript tests
+  gem 'database_cleaner', '~> 1.2'
+  
+  # Use launchy to auto open capybara pages for debugging
+  gem 'launchy'
 
   # Gems needed for Guard on various platforms
   # Uncomment/Comment out the lines for the gem(s) as needed
@@ -67,6 +73,8 @@ gem 'foundation-icons-sass-rails' # Foundation Icons font
 # slim-rails is used for automatic view generation
 gem 'slim-rails', '~> 2.0'
 
+gem 'kaminari', '~> 0.15'
+
 # Fix dependency resolution errors between sprockets-rails and slim
 gem 'tilt', '1.4.1'
 
@@ -80,7 +88,10 @@ gem 'd3-rails', '~> 3.3'
 gem 'ckeditor', '~> 4.0'
 
 # Use gon to get rails variables in JS
-gem 'gon', '~> 4.1'
+gem 'gon', '~> 5.0'
+
+# Use JsRoutes for named routes in JS
+gem 'js-routes', '~> 0.9'
 
 # Use PluggableJs to execute per page JS
 gem "pluggable_js", "~> 2.0"

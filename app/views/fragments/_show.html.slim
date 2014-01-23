@@ -3,6 +3,8 @@ aside.right-off-canvas-menu
     .left
       h5#author
     .right#continue
-      = button_tag "Continue story from here", class: 'tiny', data: { 'reveal-id' => (current_user)? "new-fragment-form" : "register-login" }
+      ul
+        li = link_to 'Read as prose', story_fragment_read_url(1, 1), class: 'tiny button', id: 'read-link'
+        li = link_to "Continue story from here", '#', class: 'tiny button', data: { 'reveal-id' => (current_user)? "new-fragment-form" : "register-login" }
   .row
     #fragment-content
