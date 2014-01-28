@@ -25,6 +25,6 @@ class FragmentsController < ApplicationController
   end
   
   def check_login
-    render js: "window.location = '#{new_user_session_url}'" unless current_user
+    render js: "window.location = '#{new_user_session_url}'" unless user_signed_in?
   end
 end
