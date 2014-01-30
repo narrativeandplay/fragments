@@ -48,7 +48,7 @@ window['stories#show'] = (data) ->
         $('#read-link').attr('href', Routes.story_fragment_read_path(story_id, fragment_id))
         $('#fragment-content').empty().append(data.content)
         $('#fragment_parent').val(data.id)
-        $('#author').empty().append("<h5>Author: #{data.author_name}</h5>")
+        $('#author').empty().append("<h5>Author: <a href='#{Routes.user_path(data.author_id)}'>#{data.author_name}</a></h5>")
       error: (xhr, status, thrownError) ->
         alert(xhr.responseText, status, thrownError);
     )
