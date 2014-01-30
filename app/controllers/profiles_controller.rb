@@ -20,6 +20,6 @@ class ProfilesController < ApplicationController
   end
 
   def same_user_check
-    redirect_to new_user_session_url unless current_user == User.find(params[:user_id])
+    redirect_to new_user_session_url unless is_current_user?(User.find(params[:user_id]))
   end
 end
