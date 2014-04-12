@@ -11,15 +11,15 @@ describe FragmentsController do
   
   describe "GET #show" do
     before do
-      get :show, story_id: fragment.story, id: fragment
+      get :show, story_id: fragment.story, id: fragment, format: 'js'
     end
     
     it 'assigns the requested fragment to @fragment' do
       assigns(:fragment).should eq fragment
     end
     
-    it 'returns a JSON object of the fragment' do
-      response.body.should eq fragment.as_json.merge(author_name: fragment.author.username).to_json
+    it "assigns the fragment's story to @story" do
+      assigns(:story).should eq story
     end
   end
 

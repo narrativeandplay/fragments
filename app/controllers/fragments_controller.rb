@@ -5,8 +5,7 @@ class FragmentsController < ApplicationController
   
   def show
     @fragment = Fragment.find(params[:id])
-    
-    respond_with @fragment.as_json.merge(author_name: @fragment.author.username)
+    @story = @fragment.story
   end
   
   def create

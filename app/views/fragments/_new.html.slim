@@ -1,14 +1,14 @@
 #new-fragment-form.reveal-modal[data-reveal]
   h5 New Fragment
   = form_for [@story, @fragment], remote: true do |f|
-    = f.hidden_field :parent, value: 1
+    = f.hidden_field :parent, value: @fragment.id
     = f.label :story, "Story: #{@story.title}"
-    = f.label :author, "Author: #{current_user.username}"
+    = f.label :author, "Author: #{current_user.profile.pen_name}"
     br
     = f.label :content, "Content:"  
     = f.cktext_area :content,  ckeditor: { toolbar: editor_toolbar, removePlugins: 'elementspath', skin: 'kama' }
     br
-    = f.submit
+    = f.submit class: 'small radius button', data: { 'disable-with' => 'Submitting...' }
   
   a.close-reveal-modal
     .fi-x

@@ -2,7 +2,7 @@
   #story
   .off-canvas-wrap
     .inner-wrap
-      == render 'fragments/show'
+      #fragment
       
       .row
         h2 = @story.title
@@ -10,7 +10,7 @@
       #story-tree.row.text-center
         a.exit-off-canvas
   
-  - if current_user
+  - if user_signed_in?
     == render 'fragments/new'
   - else
     == render 'shared/register_or_login'
