@@ -52,3 +52,7 @@ window['stories#show'] = (data) ->
   $('#new-fragment-form').on('closed', ->
     $('#error_explanation').remove()
   )
+
+  $('#edit-fragment-form').on('closed', ->
+    $('#error_explanation').remove()
+  )
