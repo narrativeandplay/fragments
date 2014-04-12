@@ -180,15 +180,32 @@ describe "StoryPages" do
         end
 
         it { should have_content 'Content' }
-        #it { should have_field 'fragment[content]' }
         it { should have_content 'Author' }
-        it { should have_content user.username }
+        it { should have_content user.profile.pen_name }
         it { should_not have_selector('div#error_explanation') }
 
-        describe "with invalid content" do
-          before { click_button "Create Fragment" }
+        describe "with invalid content" do          
+          it { click_button "Create Fragment"; should have_selector('div#error_explanation') }
+          it 'does not create a new fragment' do
+            expect { click_button "Create Fragment" }.to_not change(Fragment, :count)
+          end
+        end
+
+        describe "with valid content" do
+          before do
+            fill_in_ckeditor 'fragment_content', with: 'Lorem Lorem Ipsum'
+          end
           
-          it { should have_selector('div#error_explanation') }
+          it 'creates a new fragment' do
+            click_button "Create Fragment"
+            all('.circle').count.should eq 2
+            all('.circle')[1].click
+            should have_content('Lorem Lorem Ipsum')
+          end
+          it "redirects to the fragment's story page" do
+            click_button "Create Fragment"
+            should have_content story.title
+          end
         end
       end
 
