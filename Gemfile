@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.2'
+gem 'rails', '4.1.0'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -21,6 +21,9 @@ group :development, :test do
   # Use spring as application preloader
   gem 'spring'
   gem "spring-commands-rspec" # Spring commands for rpsec
+
+  # Use pry as rails console
+  gem 'pry-rails'
 end
 
 group :test do
@@ -53,9 +56,6 @@ end
 group :development do
   # Setup basic application layout
   gem 'rails_layout'
-  
-  # Use pry as rails console
-  gem 'pry-rails'
   
   # More detailed errors
   gem 'better_errors'
