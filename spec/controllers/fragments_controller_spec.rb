@@ -5,13 +5,9 @@ describe FragmentsController do
   let!(:story) { FactoryGirl.create(:story, creator: user) }
   let!(:fragment) { FactoryGirl.create(:fragment, story: story, author: user) }
   
-  before do
-    request.env["HTTP_ACCEPT"] = 'application/json'
-  end
-  
   describe "GET #show" do
     before do
-      get :show, story_id: fragment.story, id: fragment, format: 'js'
+      xhr :get, :show, story_id: fragment.story, id: fragment, format: 'js'
     end
     
     it 'assigns the requested fragment to @fragment' do
