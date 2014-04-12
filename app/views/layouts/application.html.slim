@@ -25,5 +25,5 @@ html
     .row
       footer          
         == render 'layouts/footer'
-
-  == render 'layouts/ie_warning'
+  - if browser.ie?
+    == render 'layouts/ie_warning'
