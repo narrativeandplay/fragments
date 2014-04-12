@@ -1,0 +1,7 @@
+$('#fragment').empty().append('<%= j(render partial: 'fragments/show') %>');
+$('#fragment_parent').val('<%= @fragment.id %>');
+$('#edit-fragment-form').remove();
+<% if is_current_user?(@fragment.author) %>
+    $('body').append('<%= j(render partial: 'fragments/edit') %>');
+    $(document).foundation();
+<% end %>

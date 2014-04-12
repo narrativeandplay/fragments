@@ -1,10 +1,15 @@
 aside.right-off-canvas-menu
   .row
-    .left
-      h5#author
     .right#continue
       ul
-        li = link_to 'Read as prose', story_fragment_read_url(1, 1), class: 'tiny button', id: 'read-link'
-        li = link_to "Continue story from here", '#', class: 'tiny button', data: { 'reveal-id' => (current_user)? "new-fragment-form" : "register-login" }
+        li = link_to 'Read as prose', story_fragment_read_url(@fragment.story, @fragment), class: 'tiny button'
+        li = link_to "Continue story from here", '#', class: 'tiny button', data: { "reveal-id" => (current_user)? "new-fragment-form" : "register-login" }
+        - if is_current_user?(@fragment.author)
+          li = link_to 'Edit this fragment', '#', class: 'tiny button', data: { 'reveal-id' => 'edit-fragment-form' }
+    .left
+      h5#author
+        == "Author: #{link_to @fragment.author.profile.pen_name, user_path(@fragment.author)}"
   .row
     #fragment-content
+      == @fragment.content
+      

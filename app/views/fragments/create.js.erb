@@ -1,2 +1,2 @@
-$('#new_fragment').remove('#error_explanation');
+$('#error_explanation').remove();
 $('#new_fragment').prepend('<%= j(render partial: 'shared/form_errors', locals: { form_object: @fragment }) %>');

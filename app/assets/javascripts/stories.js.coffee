@@ -44,16 +44,15 @@ window['stories#show'] = (data) ->
     fragment_id = $(this).data('fragment-data').id
     $.ajax(
       url: Routes.story_fragment_path(story_id, fragment_id)
-      success: (data) ->
-        $('#read-link').attr('href', Routes.story_fragment_read_path(story_id, fragment_id))
-        $('#fragment-content').empty().append(data.content)
-        $('#fragment_parent').val(data.id)
-        $('#author').empty().append("<h5>Author: <a href='#{Routes.user_path(data.author_id)}'>#{data.author_name}</a></h5>")
       error: (xhr, status, thrownError) ->
-        alert(xhr.responseText, status, thrownError);
+        console.log(xhr.responseText, status, thrownError);
     )
   )
   
   $('#new-fragment-form').on('closed', ->
+    $('#error_explanation').remove()
+  )
+
+  $('#edit-fragment-form').on('closed', ->
     $('#error_explanation').remove()
   )

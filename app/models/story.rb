@@ -13,7 +13,7 @@ class Story < ActiveRecord::Base
   belongs_to :creator, class_name: 'User'
   
   has_many :fragments, inverse_of: :story
-  has_many :authors, through: :fragments, uniq: true
+  has_many :authors, -> { uniq }, through: :fragments
   
   accepts_nested_attributes_for :fragments
 
