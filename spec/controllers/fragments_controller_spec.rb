@@ -66,4 +66,66 @@ describe FragmentsController do
       end
     end
   end
+
+  describe "PATCH #update" do
+    let(:fragment_attributes) { fragment.attributes }
+    
+    before { fragment_attributes["content"] = "Lore" }
+    
+    context "when logged in" do
+      context "as fragment's author" do
+        before { sign_in user }
+
+        context "with valid attributes" do
+          it 'updates the fragment' do
+            expect {
+              patch :update, story_id: story, id: fragment_attributes["id"], fragment: fragment_attributes
+              fragment.reload
+            }.to change(fragment, "content")
+          end
+
+          it 'redirects to the story of the fragment' do
+            patch :update, story_id: story, id: fragment_attributes["id"], fragment: fragment_attributes
+            response.body.should include "window.location = '#{story_url story}'"
+          end
+        end
+
+        context "with invalid attributes" do
+          before { fragment_attributes["content"] = '    ' }
+
+          it 'does not update the fragment' do
+            expect {
+              patch :update, story_id: story, id: fragment_attributes["id"], fragment: fragment_attributes, format: 'js'
+              fragment.reload
+            }.not_to change(fragment, 'content')
+          end
+        end
+      end
+
+      context "as another user" do
+        let(:user2) { FactoryGirl.create(:user) }
+        before { sign_in user2 }
+
+        it 'does not update the fragment' do
+          expect {
+            patch :update, story_id: story, id: fragment_attributes["id"], fragment: fragment_attributes, format: 'js'
+            fragment.reload
+          }.not_to change(fragment, 'content')
+        end
+      end
+    end
+
+    context "when not logged in" do
+      it 'does not update the fragment' do
+        expect {
+          patch :update, story_id: story, id: fragment_attributes["id"], fragment: fragment_attributes
+        }.not_to change(fragment, "content")
+      end
+      
+      it 'redirects to the login page' do
+        patch :update, story_id: story, id: fragment_attributes["id"], fragment: fragment_attributes
+        response.body.should include "window.location = '#{new_user_session_url}'"
+      end
+    end
+  end
 end

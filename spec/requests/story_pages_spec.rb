@@ -220,5 +220,76 @@ describe "StoryPages" do
         it { should have_link('Login') }
       end
     end
+
+    describe "editing a fragment" do
+      context "logged in" do
+        context "as fragment author" do
+          before do 
+            login user
+            visit story_path(story)
+            find('.circle').click
+          end
+          
+          it { should have_link('Edit this fragment') }
+
+          describe "editing the fragment" do
+            before { click_link 'Edit this fragment' }
+
+            it { should have_content 'Content' }
+            it { should have_content 'Author' }
+            it { should have_content user.profile.pen_name }
+            it { should_not have_selector('div#error_explanation') }
+
+            describe "with valid content" do
+              before do
+                fill_in_ckeditor 'edit_form', with: 'Lore'
+              end
+              
+              it "redirects to the fragment's story" do
+                click_button 'Update Fragment'
+                should have_content fragment.story.title
+              end
+              it "updates the fragment" do
+                click_button 'Update Fragment'
+                find('.circle').click
+                should have_content('Lore')
+              end
+            end
+
+            describe "with invalid content" do
+              before do
+                fill_in_ckeditor 'edit_form', with: '  '
+              end
+              
+              it { click_button 'Update Fragment'; should have_selector('div#error_explanation') }
+              it 'does not update the fragment' do
+                click_button 'Update Fragment'
+                find('.circle').click
+                should have_content('Lorem Ipsum');
+              end
+            end
+          end
+        end
+
+        context "as another user" do
+          let(:user2) { FactoryGirl.create(:user) }
+          before do
+            login user2
+            visit story_path(story)
+            find('.circle').click
+          end
+          
+          it { should_not have_link('Edit this fragment') }
+        end
+      end
+
+      context "logged out" do
+        before do
+          find('.circle').click
+        end
+
+        it { should_not have_link('Edit this fragment') }
+      end
+    end
   end
 end
