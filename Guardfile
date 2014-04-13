@@ -26,7 +26,7 @@ guard :rspec, cmd: 'spring rspec', all_on_start: true, after_all_pass: false do
   watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$})   { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'spec/acceptance' }
 end
 
-guard 'rails' do
+guard 'rails', CLI: 'rails server --binding 127.0.0.1' do
   watch('Gemfile.lock')
   watch(%r{^(config|lib)/.*})
 end
