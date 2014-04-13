@@ -21,9 +21,6 @@ group :development, :test do
   # Use spring as application preloader
   gem 'spring'
   gem "spring-commands-rspec" # Spring commands for rpsec
-
-  # Use pry as rails console
-  gem 'pry-rails'
 end
 
 group :test do
@@ -63,6 +60,9 @@ group :development do
   
   gem 'annotate'
 end
+
+# Use pry as rails console
+gem 'pry-rails'
 
 # Use Foundation as front-end framework
 gem 'foundation-rails', '~> 5.0'
