@@ -25,6 +25,10 @@ describe "StoryPages" do
 
     context "with one story" do
       it { should have_content(story.title) }
+      it { should have_link(user.profile.pen_name, href: user_path(user)) }
+      it { should have_content("Contributors: #{story.authors.count}") }
+      it { should have_content("Created on: #{story.created_at.to_date}") }
+      it { should have_content("Last updated: #{story.updated_at.to_date}") }
     end
 
     context "with more than one story" do
