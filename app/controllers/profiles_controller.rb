@@ -8,6 +8,7 @@ class ProfilesController < ApplicationController
   def update
     @user = User.find(params[:user_id])
     if @user.profile.update_attributes(profile_params)
+      flash[:notice] = "Profile updated successfully!"
       redirect_to user_path(@user)
     else
       render 'edit'
@@ -20,6 +21,6 @@ class ProfilesController < ApplicationController
   end
 
   def same_user_check
-    redirect_to new_user_session_url unless current_user == User.find(params[:user_id])
+    redirect_to new_user_session_url unless is_current_user?(User.find(params[:user_id]))
   end
 end

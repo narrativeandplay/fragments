@@ -9,10 +9,6 @@ module UsersHelper
   end
   
   def default_description(user)
-    "#{user == current_user ? "You have" : "This user has" } created #{user.stories.count} stories, authored #{user.fragments.count} fragments, and contributed to #{user.fragments.pluck(:story_id).uniq.count} stories."
-  end
-  
-  def is_current_user?
-    current_user == @user
+    "#{is_current_user?(user) ? "You have" : "This user has" } created #{user.stories.count} stories, authored #{user.fragments.count} fragments, and contributed to #{user.fragments.pluck(:story_id).uniq.count} stories."
   end
 end
