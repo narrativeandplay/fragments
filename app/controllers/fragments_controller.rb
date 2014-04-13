@@ -37,7 +37,7 @@ class FragmentsController < ApplicationController
   
   def ensure_fragment_author
     fragment = Fragment.find(params[:id])
-    flash[:error] = "You may only edit a fragment that you have authored!"
+    flash[:error] = "You may only edit a fragment that you have authored!" unless is_current_user?(fragment.author)
     render js: "window.location = '#{story_url(fragment.story)}'" unless is_current_user?(fragment.author)
   end
 end
