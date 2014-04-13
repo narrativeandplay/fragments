@@ -4,7 +4,7 @@
     br
     == story.fragments.first.content.truncate(100, separator: ' ')
     ul
-      li = "Creator: #{link_to story.creator.profile.pen_name, user_path(story.creator)}"
+      li == "Creator: #{link_to story.creator.profile.pen_name, user_path(story.creator)}"
       li = "Contributors: #{story.authors.count}"
       li = "Created on: #{story.created_at.to_date}"
       li = "Last updated: #{story.updated_at.to_date}"
