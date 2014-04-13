@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.2'
+gem 'rails', '4.1.0'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -54,15 +54,15 @@ group :development do
   # Setup basic application layout
   gem 'rails_layout'
   
-  # Use pry as rails console
-  gem 'pry-rails'
-  
   # More detailed errors
   gem 'better_errors'
   gem 'binding_of_caller' # For interactive console in page when errors occur
   
   gem 'annotate'
 end
+
+# Use pry as rails console
+gem 'pry-rails'
 
 # Use Foundation as front-end framework
 gem 'foundation-rails', '~> 5.0'

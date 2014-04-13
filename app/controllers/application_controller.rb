@@ -4,6 +4,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
+  before_filter :set_return_to, unless: :devise_controller?
+  
+  helper_method :is_current_user?
+
+  def after_sign_in_path_for(resource)
+    stored_location_for(resource) || root_path
+  end
 
   protected
 
@@ -12,9 +19,17 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_in) << :email
     devise_parameter_sanitizer.for(:account_update) << :email
   end
+  
+  def set_return_to
+    session[:user_return_to] = request.original_url unless controller_name == 'fragments'
+  end
+
+  def is_current_user?(user)
+    current_user == user
+  end
 
   private
   def check_logged_in
-    redirect_to new_user_session_url unless current_user
+    redirect_to new_user_session_url unless user_signed_in?
   end
 end

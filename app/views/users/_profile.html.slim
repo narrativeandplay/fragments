@@ -13,12 +13,12 @@ dl.tabs[data-tab]
   #profile.content.active
     p
       = @user.profile.description || default_description(@user)
-    - if is_current_user?
+    - if is_current_user?(@user)
       br
       a.small.radius.button[href=edit_user_profile_path(@user)] Edit Profile
     br
     br
-    - if is_current_user?
+    - if is_current_user?(@user)
       h5 Login Information
       p
         = "Username: #{@user.username}"
@@ -28,11 +28,11 @@ dl.tabs[data-tab]
   #stories-created.content
     - if @user.stories.count == 0
       p
-        | #{is_current_user? ? "You have" : "This user has"} not created any stories
+        | #{is_current_user?(@user) ? "You have" : "This user has"} not created any stories
     == render partial: 'shared/story_list_item', locals: { stories: @user.stories }
   #stories-contributed-to.content
     - if @user.stories_contributed_to.count == 0
       p
-        | #{is_current_user? ? "You have" : "This user has"} not contributed to any stories
+        | #{is_current_user?(@user) ? "You have" : "This user has"} not contributed to any stories
     == render partial: 'shared/story_list_item', locals: { stories: @user.stories_contributed_to }
     

@@ -51,8 +51,9 @@
     | ×
 
 - if browser.ie?
-      javascript:
-        $("#ie-warning").foundation('reveal', 'open');
+  javascript:
+    $(document).foundation();
+    $("#ie-warning").foundation('reveal', 'open');
         
 javascript:
   $("#ie-warning-explanation").on("closed", function() {

@@ -1,0 +1,2 @@
+$('#error_explanation').remove();
+$('[id^=edit_fragment_]').prepend('<%= j(render partial: 'shared/form_errors', locals: { form_object: @fragment }) %>');

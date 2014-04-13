@@ -60,6 +60,8 @@ RSpec.configure do |config|
   config.after do
     DatabaseCleaner.clean
   end
+  
+  Capybara.default_wait_time = 10 # Wait for modal to finish opening
 
   # Include devise test helpers
   config.include Devise::TestHelpers, :type => :controller

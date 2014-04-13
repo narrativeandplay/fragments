@@ -1,3 +1,8 @@
-h2 = @story.title
-- @fragments.each do |fragment|
-  == fragment.content
+.large-12.columns
+  .left
+    h2 = @story.title
+  .right#back
+    = link_to "<< Back to tree view", @story, class: 'button tiny'
+.large-12.columns
+  - @fragments.each do |fragment|
+    == fragment.content

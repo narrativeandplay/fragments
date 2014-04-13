@@ -8,6 +8,6 @@ that can be modified to deploy on any server/PaaS.
 
 This branch contains the latest stable project code. 
 
-The prototype is currently deployed [here](http://limitless-cliffs-8166.herokuapp.com/)
+The prototype is currently deployed [here](http://fragments-beta.herokuapp.com/)
 
 Copyright (c) 2013 Benedict Lee, licensed under the MIT License
