@@ -32,7 +32,7 @@ window['stories#show'] = (data) ->
     d.y
   ).attr("r", radius).style("fill", (d) ->
     color d.author_id
-  ).style("fill-opacity", 0.8).style("stroke", (d) ->
+  ).style("stroke", (d) ->
     color d.author_id
   ).append("title").text((d) ->
     d.name
