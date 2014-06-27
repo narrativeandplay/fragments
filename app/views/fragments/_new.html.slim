@@ -6,7 +6,7 @@
     = f.label :author, "Author: #{current_user.profile.pen_name}"
     br
     = f.label :content, "Content:"  
-    = f.cktext_area :content,  ckeditor: { toolbar: editor_toolbar, removePlugins: 'elementspath', skin: 'kama' }
+    = f.cktext_area :content,  ckeditor: { toolbar: editor_toolbar, removePlugins: 'elementspath', skin: 'office2013' }
     br
     = f.submit class: 'small radius button', data: { 'disable-with' => 'Submitting...' }
   
