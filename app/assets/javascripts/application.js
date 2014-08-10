@@ -20,9 +20,17 @@
 //= require_tree .
 
 $(function() {
-  $(document).foundation();
+    $(document).foundation({
+        offcanvas : {
+            open_method: 'overlap' // Sets method in which offcanvas opens, can also be 'overlap'
+        }
+    });
 });
 
 $(document).on('page:load', function(){
-    $(document).foundation();
-})
+    $(document).foundation({
+        offcanvas : {
+            open_method: 'overlap' // Sets method in which offcanvas opens, can also be 'overlap'
+        }
+    });
+});
