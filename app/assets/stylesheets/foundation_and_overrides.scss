@@ -529,11 +529,11 @@ $off-canvas-bg: ivory;
 // $off-canvas-overlay-transition: background 300ms ease;
 // $off-canvas-overlay-cursor: pointer;
 // $off-canvas-overlay-box-shadow: -4px 0 4px rgba(#000, 0.5), 4px 0 4px rgba(#000, 0.5);
-// $off-canvas-overlay-background: rgba(#FFF, 0.2);
-// $off-canvas-overlay-background-hover: rgba(#FFF, 0.05);
+ $off-canvas-overlay-background: rgba(#000, 0.4);
+ $off-canvas-overlay-background-hover: rgba(#000, 0.4);
 
-// Transition Variabls
-// $menu-slide: "transform 500ms ease";
+// Transition Variables
+// $menu-slide: transform 5000ms ease 0s;
 
 // Orbit
 

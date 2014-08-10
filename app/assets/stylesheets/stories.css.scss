@@ -31,13 +31,14 @@
 }
 
 .circle {
-  fill: none;;
   stroke-width: 1.5px;
   stroke-opacity: 1.0;
+  fill-opacity: 1.0;
   
   &:hover {
     cursor: pointer;
-    fill-opacity: 0.9;
+    fill-opacity: 0.8;
+    stroke-opacity: 0.5;
   }
 }
 
