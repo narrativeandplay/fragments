@@ -1,5 +1,5 @@
 #new-fragment-form.reveal-modal[data-reveal]
-  h5 New Fragment
+  h3 New Fragment
   = form_for [@story, @fragment], remote: true do |f|
     = f.hidden_field :parent, value: @fragment.id
     = f.label :story, "Story: #{@story.title}"

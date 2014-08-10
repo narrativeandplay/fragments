@@ -1,5 +1,5 @@
 #edit-fragment-form.reveal-modal[data-reveal]
-  h5 Edit Fragment
+  h3 Edit Fragment
   = form_for [@story, @fragment], remote: true do |f|
     = f.label :story, "Story: #{@story.title}"
     = f.label :author, "Author: #{@fragment.author.profile.pen_name}"
