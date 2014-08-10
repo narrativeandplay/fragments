@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require foundation
-//= require ckeditor/override
 //= require ckeditor/init
 //= require d3
 //= require js-routes
