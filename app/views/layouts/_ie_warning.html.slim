@@ -31,8 +31,7 @@
     = link_to "here", '#', data: { 'reveal-id' => 'ie-warning-explanation' }
     |  for an explanation of why Internet Explorer is not supported.
     
-  a.close-reveal-modal
-    | ×
+  a.close-reveal-modal.fi-x
 
 #ie-warning-explanation.reveal-modal.medium[data-reveal]
   p
@@ -47,8 +46,7 @@
     ' future, should IE9/IE10/IE11 support be dropped from the frameworks we use, we
     | will not attempt to backport it to those browsers.
     
-  a.close-reveal-modal data-reveal-id="ie-warning"
-    | ×
+  a.close-reveal-modal.fi-x data-reveal-id="ie-warning"
 
 - if browser.ie?
   javascript:

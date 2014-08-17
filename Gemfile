@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.1.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.0'
+gem 'rails', '4.1.4'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -23,7 +23,7 @@ group :development, :test do
 
   # Use Rack-Insight for debugging
   #gem 'rack-insight', '0.5.27'
-
+  
   # Use spring as application preloader
   gem 'spring'
   gem "spring-commands-rspec" # Spring commands for rpsec
@@ -71,7 +71,7 @@ end
 gem 'pry-rails'
 
 # Use Foundation as front-end framework
-gem 'foundation-rails', '~> 5.0'
+gem 'foundation-rails', '~> 5.3'
 gem 'foundation_rails_helper', github: 'benedictleejh/foundation_rails_helper' # Form styling in Foundation
 gem 'foundation-icons-sass-rails' # Foundation Icons font
 
@@ -79,6 +79,7 @@ gem 'foundation-icons-sass-rails' # Foundation Icons font
 # slim-rails is used for automatic view generation
 gem 'slim-rails', '~> 2.0'
 
+# Use kaminari for paging
 gem 'kaminari', '~> 0.15'
 
 # Fix dependency resolution errors between sprockets-rails and slim
@@ -124,7 +125,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
+gem 'jbuilder', '~> 2.0'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
