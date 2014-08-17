@@ -268,8 +268,9 @@ describe "StoryPages" do
               it { click_button 'Update Fragment'; should have_selector('div#error_explanation') }
               it 'does not update the fragment' do
                 click_button 'Update Fragment'
+                visit story_path(story)
                 find('.circle').click
-                should have_content('Lorem Ipsum');
+                should have_content('Lorem Ipsum')
               end
             end
           end

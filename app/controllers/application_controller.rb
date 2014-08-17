@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_filter :set_return_to, unless: :devise_controller?
-  
+
   helper_method :is_current_user?
 
   def after_sign_in_path_for(resource)
@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_in) << :email
     devise_parameter_sanitizer.for(:account_update) << :email
   end
-  
+
   def set_return_to
     session[:user_return_to] = request.original_url unless controller_name == 'fragments'
   end
