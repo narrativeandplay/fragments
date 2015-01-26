@@ -10,11 +10,11 @@ describe StoriesController do
     before { get :index}
     
     it 'populates an array of stories' do
-      assigns(:stories).should eq [story]
+      expect(assigns(:stories)).to eq [story]
     end
     
     it 'renders the index view' do
-      response.should render_template :index
+      expect(response).to render_template :index
     end
   end
 
@@ -26,24 +26,24 @@ describe StoriesController do
       end
       
       it 'assigns a new Story to @story' do
-        assigns(:story).should be_a_new(Story)
-        assigns(:story).should_not be_changed
+        expect(assigns(:story)).to be_a_new(Story)
+        expect(assigns(:story)).not_to be_changed
       end
 
       it 'assigns a new Fragment to @fragment' do
-        assigns(:fragment).should be_a_new(Fragment)
-        assigns(:fragment).should_not be_changed
+        expect(assigns(:fragment)).to be_a_new(Fragment)
+        expect(assigns(:fragment)).not_to be_changed
       end
 
       it 'renders the :new template' do
-        response.should render_template :new
+        expect(response).to render_template :new
       end
     end
 
     describe "when not logged in" do
       it 'redirects to the login page' do
         get :new
-        response.should redirect_to new_user_session_url
+        expect(response).to redirect_to new_user_session_url
       end
     end
   end
@@ -52,15 +52,15 @@ describe StoriesController do
     before { get :show, id: story }
     
     it 'assigns the requested story to @story' do
-      assigns(:story).should eq story
+      expect(assigns(:story)).to eq story
     end
     
     it "assigns a new Fragment to @fragments" do
-      assigns(:fragment).should be_a_new(Fragment)
+      expect(assigns(:fragment)).to be_a_new(Fragment)
     end
     
     it 'renders the :show template' do
-      response.should render_template :show
+      expect(response).to render_template :show
     end
   end
 
@@ -86,7 +86,7 @@ describe StoriesController do
 
         it 'redirects to the new story' do
           post :create, story: story_attributes.merge(fragment: fragment_attributes)
-          response.should redirect_to assigns(:story)
+          expect(response).to redirect_to assigns(:story)
         end
       end
 
@@ -108,7 +108,7 @@ describe StoriesController do
 
           it 're-renders the new method' do
             post :create, story: story_attributes.merge(fragment: fragment_attributes)
-            response.should render_template :new
+            expect(response).to render_template :new
           end
         end
 
@@ -129,7 +129,7 @@ describe StoriesController do
 
           it 're-renders the new method' do
             post :create, story: story_attributes.merge(fragment: fragment_attributes)
-            response.should render_template :new
+            expect(response).to render_template :new
           end
         end
       end
@@ -150,7 +150,7 @@ describe StoriesController do
       
       it 'redirects to the login page' do
         post :create, story: story_attributes.merge(fragment: fragment_attributes)
-        response.should redirect_to new_user_session_url
+        expect(response).to redirect_to new_user_session_url
       end
     end
     

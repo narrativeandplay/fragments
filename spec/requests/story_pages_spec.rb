@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-share_examples_for 'the new story form' do
-  it { should have_content 'Title' }
-  it { should have_content 'Content' }
-  it { should have_field 'Title' }
-  it { should have_field 'Content' }
+shared_examples_for 'the new story form' do
+  it { is_expected.to have_content 'Title' }
+  it { is_expected.to have_content 'Content' }
+  it { is_expected.to have_field 'Title' }
+  it { is_expected.to have_field 'Content' }
 end
 
 describe "StoryPages" do
@@ -21,14 +21,14 @@ describe "StoryPages" do
   describe "stories index" do
     before { visit stories_path }
 
-    it { should have_link("New Story") }
+    it { is_expected.to have_link("New Story") }
 
     context "with one story" do
-      it { should have_content(story.title) }
-      it { should have_link(user.profile.pen_name, href: user_path(user)) }
-      it { should have_content("Contributors: #{story.authors.count}") }
-      it { should have_content("Created on: #{story.created_at.to_date}") }
-      it { should have_content("Last updated: #{story.updated_at.to_date}") }
+      it { is_expected.to have_content(story.title) }
+      it { is_expected.to have_link(user.profile.pen_name, href: user_path(user)) }
+      it { is_expected.to have_content("Contributors: #{story.authors.count}") }
+      it { is_expected.to have_content("Created on: #{story.created_at.to_date}") }
+      it { is_expected.to have_content("Last updated: #{story.updated_at.to_date}") }
     end
 
     context "with more than one story" do
@@ -37,9 +37,9 @@ describe "StoryPages" do
 
       before { visit stories_path }
 
-      it { should have_content(story.title) }
-      it { should have_content(story1.title) }
-      it { should have_selector('hr') }
+      it { is_expected.to have_content(story.title) }
+      it { is_expected.to have_content(story1.title) }
+      it { is_expected.to have_selector('hr') }
     end
 
     describe "clicking new story link" do
@@ -56,8 +56,8 @@ describe "StoryPages" do
       context "logged out" do
         before { click_link 'New Story' }
         
-        it { should have_link("Register") }
-        it { should have_link("Login") }
+        it { is_expected.to have_link("Register") }
+        it { is_expected.to have_link("Login") }
       end
     end
   end
@@ -84,7 +84,7 @@ describe "StoryPages" do
           end
           it 'redirects to the story page' do
             click_button 'Create Story'
-            should have_selector('h2', text: 'Story')
+            is_expected.to have_selector('h2', text: 'Story')
           end
         end
 
@@ -103,7 +103,7 @@ describe "StoryPages" do
                 before { click_button 'Create Story' }
                 
                 it_behaves_like 'the new story form'
-                it { should have_selector('div#error_explanation') }
+                it { is_expected.to have_selector('div#error_explanation') }
               end
             end
 
@@ -120,7 +120,7 @@ describe "StoryPages" do
                 before { click_button 'Create Story' }
 
                 it_behaves_like 'the new story form'
-                it { should have_selector('div#error_explanation') }
+                it { is_expected.to have_selector('div#error_explanation') }
               end
             end
           end
@@ -139,7 +139,7 @@ describe "StoryPages" do
                 before { click_button 'Create Story' }
 
                 it_behaves_like 'the new story form'
-                it { should have_selector('div#error_explanation') }
+                it { is_expected.to have_selector('div#error_explanation') }
               end
             end
           end
@@ -150,18 +150,18 @@ describe "StoryPages" do
     context "logged out" do
       before { visit new_story_path }
       
-      it { should have_selector('h2', text: 'Login') }
-      it { should have_field('Username') }
-      it { should have_field('Password') }
+      it { is_expected.to have_selector('h2', text: 'Login') }
+      it { is_expected.to have_field('Username') }
+      it { is_expected.to have_field('Password') }
     end
   end
 
   describe "viewing a story", js: true do
     before { visit story_path(story) }
     
-    it { should have_selector('h2', story.title) }
+    it { is_expected.to have_selector('h2', story.title) }
     it 'has the story tree' do
-      should have_selector('svg', count: story.fragments.count)
+      is_expected.to have_selector('svg', count: story.fragments.count)
     end
 
     describe "viewing a fragment's content", js: true do
@@ -169,9 +169,9 @@ describe "StoryPages" do
         find('.circle').click
       end
       
-      it { should have_content(fragment.content) }
-      it { should have_link 'Read as prose' }
-      it { should have_link 'Continue story from here' } 
+      it { is_expected.to have_content(fragment.content) }
+      it { is_expected.to have_link 'Read as prose' }
+      it { is_expected.to have_link 'Continue story from here' } 
     end
 
     describe "adding a new fragment" do
@@ -183,13 +183,13 @@ describe "StoryPages" do
           click_link('Continue story from here')
         end
 
-        it { should have_content 'Content' }
-        it { should have_content 'Author' }
-        it { should have_content user.profile.pen_name }
-        it { should_not have_selector('div#error_explanation') }
+        it { is_expected.to have_content 'Content' }
+        it { is_expected.to have_content 'Author' }
+        it { is_expected.to have_content user.profile.pen_name }
+        it { is_expected.not_to have_selector('div#error_explanation') }
 
         describe "with invalid content" do          
-          it { click_button "Create Fragment"; should have_selector('div#error_explanation') }
+          it { click_button "Create Fragment"; is_expected.to have_selector('div#error_explanation') }
           it 'does not create a new fragment' do
             expect { click_button "Create Fragment" }.to_not change(Fragment, :count)
           end
@@ -202,13 +202,13 @@ describe "StoryPages" do
           
           it 'creates a new fragment' do
             click_button "Create Fragment"
-            all('.circle').count.should eq 2
+            expect(all('.circle').count).to eq 2
             all('.circle')[1].click
-            should have_content('Lorem Lorem Ipsum')
+            is_expected.to have_content('Lorem Lorem Ipsum')
           end
           it "redirects to the fragment's story page" do
             click_button "Create Fragment"
-            should have_content story.title
+            is_expected.to have_content story.title
           end
         end
       end
@@ -219,9 +219,9 @@ describe "StoryPages" do
           click_link('Continue story from here')
         end
 
-        it { should_not have_content 'Content' }
-        it { should have_link('Register') }
-        it { should have_link('Login') }
+        it { is_expected.not_to have_content 'Content' }
+        it { is_expected.to have_link('Register') }
+        it { is_expected.to have_link('Login') }
       end
     end
 
@@ -234,15 +234,15 @@ describe "StoryPages" do
             find('.circle').click
           end
           
-          it { should have_link('Edit this fragment') }
+          it { is_expected.to have_link('Edit this fragment') }
 
           describe "editing the fragment" do
             before { click_link 'Edit this fragment' }
 
-            it { should have_content 'Content' }
-            it { should have_content 'Author' }
-            it { should have_content user.profile.pen_name }
-            it { should_not have_selector('div#error_explanation') }
+            it { is_expected.to have_content 'Content' }
+            it { is_expected.to have_content 'Author' }
+            it { is_expected.to have_content user.profile.pen_name }
+            it { is_expected.not_to have_selector('div#error_explanation') }
 
             describe "with valid content" do
               before do
@@ -251,12 +251,12 @@ describe "StoryPages" do
               
               it "redirects to the fragment's story" do
                 click_button 'Update Fragment'
-                should have_content fragment.story.title
+                is_expected.to have_content fragment.story.title
               end
               it "updates the fragment" do
                 click_button 'Update Fragment'
                 find('.circle').click
-                should have_content('Lore')
+                is_expected.to have_content('Lore')
               end
             end
 
@@ -265,12 +265,12 @@ describe "StoryPages" do
                 fill_in_ckeditor 'edit_form', with: '  '
               end
               
-              it { click_button 'Update Fragment'; should have_selector('div#error_explanation') }
+              it { click_button 'Update Fragment'; is_expected.to have_selector('div#error_explanation') }
               it 'does not update the fragment' do
                 click_button 'Update Fragment'
                 visit story_path(story)
                 find('.circle').click
-                should have_content('Lorem Ipsum')
+                is_expected.to have_content('Lorem Ipsum')
               end
             end
           end
@@ -284,7 +284,7 @@ describe "StoryPages" do
             find('.circle').click
           end
           
-          it { should_not have_link('Edit this fragment') }
+          it { is_expected.not_to have_link('Edit this fragment') }
         end
       end
 
@@ -293,7 +293,7 @@ describe "StoryPages" do
           find('.circle').click
         end
 
-        it { should_not have_link('Edit this fragment') }
+        it { is_expected.not_to have_link('Edit this fragment') }
       end
     end
   end

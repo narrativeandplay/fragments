@@ -11,11 +11,11 @@ describe FragmentsController do
     end
     
     it 'assigns the requested fragment to @fragment' do
-      assigns(:fragment).should eq fragment
+      expect(assigns(:fragment)).to eq fragment
     end
     
     it "assigns the fragment's story to @story" do
-      assigns(:story).should eq story
+      expect(assigns(:story)).to eq story
     end
   end
 
@@ -34,7 +34,7 @@ describe FragmentsController do
 
         it 'redirects to the story the fragment is created for' do
           post :create, story_id: story, fragment: fragment_attributes
-          response.body.should include "window.location = '#{story_url story}'"
+          expect(response.body).to include "window.location = '#{story_url story}'"
         end
       end
 
@@ -58,7 +58,7 @@ describe FragmentsController do
       
       it 'redirects to the login page' do
         post :create, story_id: story, fragment: fragment_attributes
-        response.body.should include "window.location = '#{new_user_session_url}'"
+        expect(response.body).to include "window.location = '#{new_user_session_url}'"
       end
     end
   end
@@ -82,7 +82,7 @@ describe FragmentsController do
 
           it 'redirects to the story of the fragment' do
             patch :update, story_id: story, id: fragment_attributes["id"], fragment: fragment_attributes
-            response.body.should include "window.location = '#{story_url story}'"
+            expect(response.body).to include "window.location = '#{story_url story}'"
           end
         end
 
@@ -120,7 +120,7 @@ describe FragmentsController do
       
       it 'redirects to the login page' do
         patch :update, story_id: story, id: fragment_attributes["id"], fragment: fragment_attributes
-        response.body.should include "window.location = '#{new_user_session_url}'"
+        expect(response.body).to include "window.location = '#{new_user_session_url}'"
       end
     end
   end

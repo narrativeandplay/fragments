@@ -18,23 +18,23 @@ describe "UserPages" do
   describe "profile page" do
     before { visit user_path(user) }
     
-    it { should have_content('Stories Created') }
-    it { should have_content('Stories Contributed To') }
+    it { is_expected.to have_content('Stories Created') }
+    it { is_expected.to have_content('Stories Contributed To') }
 
-    it { should have_content(user.profile.pen_name) }
-    it { should have_title(user.profile.pen_name) }
-    it { should_not have_content(user.username) }
+    it { is_expected.to have_content(user.profile.pen_name) }
+    it { is_expected.to have_title(user.profile.pen_name) }
+    it { is_expected.not_to have_content(user.username) }
     
     context "logged out" do
-      it { should_not have_content(user.username) }
-      it { should_not have_content(user.email) }
-      it { should_not have_link('Edit Profile') }
-      it { should_not have_link('Edit Login Information') }
+      it { is_expected.not_to have_content(user.username) }
+      it { is_expected.not_to have_content(user.email) }
+      it { is_expected.not_to have_link('Edit Profile') }
+      it { is_expected.not_to have_link('Edit Login Information') }
 
       describe "visiting the profile edit page" do
         before { visit edit_user_profile_path(user) }
 
-        it { should have_content('Login') }
+        it { is_expected.to have_content('Login') }
       end
     end
 
@@ -46,15 +46,15 @@ describe "UserPages" do
       describe "visiting user's own profile" do
         before { visit user_path(user) }
 
-        it { should have_content(user.username) }
-        it { should have_content(user.email) }
-        it { should have_link('Edit Profile') }
-        it { should have_link('Edit Login Information') }
+        it { is_expected.to have_content(user.username) }
+        it { is_expected.to have_content(user.email) }
+        it { is_expected.to have_link('Edit Profile') }
+        it { is_expected.to have_link('Edit Login Information') }
 
         describe "editing user's own profile" do
           before { click_link 'Edit Profile' }
 
-          it { should have_content('Edit Profile') }
+          it { is_expected.to have_content('Edit Profile') }
 
           describe "with invalid information" do
             before do
@@ -62,7 +62,7 @@ describe "UserPages" do
               click_button 'Update Profile'
             end
 
-            it { should have_selector('div#error_explanation') }
+            it { is_expected.to have_selector('div#error_explanation') }
           end
         end
       end
@@ -70,10 +70,10 @@ describe "UserPages" do
       describe "visit another user's profile" do
         before { visit user_path(user2) }
 
-        it { should_not have_content(user2.username) }
-        it { should_not have_content(user2.email) }
-        it { should_not have_link('Edit Profile') }
-        it { should_not have_link('Edit Login Information') }
+        it { is_expected.not_to have_content(user2.username) }
+        it { is_expected.not_to have_content(user2.email) }
+        it { is_expected.not_to have_link('Edit Profile') }
+        it { is_expected.not_to have_link('Edit Login Information') }
       end
     end
   end
