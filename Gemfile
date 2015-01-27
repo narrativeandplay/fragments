@@ -8,7 +8,7 @@ gem 'pg'
 
 group :development, :test do
   # Use RSpec for testing
-  gem 'rspec-rails', '~> 2.14'
+  gem 'rspec-rails', '~> 3.1'
 
   # Use Guard to run tests automatically
   gem 'guard-rspec', '~> 4.0'
