@@ -52,7 +52,7 @@ RSpec.configure do |config|
     if Capybara.current_driver == :rack_test
       DatabaseCleaner.strategy = :transaction
     else
-      DatabaseCleaner.strategy = :truncation
+      DatabaseCleaner.strategy = :truncation, { except: %w[public.schema_migrations] }
     end
     DatabaseCleaner.start
   end
