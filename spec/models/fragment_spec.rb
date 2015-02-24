@@ -23,32 +23,39 @@ describe Fragment do
   
   subject { @fragment }
   
-  it { should respond_to(:content) }
+  it { is_expected.to respond_to(:content) }
   
-  it { should respond_to(:author) }
-  it { should respond_to(:story) }
-  it { should respond_to(:parent) }
+  it { is_expected.to respond_to(:author) }
+  it { is_expected.to respond_to(:story) }
+  it { is_expected.to respond_to(:parent) }
   
-  its(:author) { should eq user }
-  its(:story) { should eq story }
+  describe '#author' do
+    subject { super().author }
+    it { is_expected.to eq user }
+  end
+
+  describe '#story' do
+    subject { super().story }
+    it { is_expected.to eq story }
+  end
   
-  it { should be_valid }
+  it { is_expected.to be_valid }
 
   describe "blank content" do
     before { @fragment.content = "   " }
     
-    it { should_not be_valid }
+    it { is_expected.not_to be_valid }
   end
 
   describe "when author_id is nil" do
     before { @fragment.author_id = nil }
     
-    it { should_not be_valid }
+    it { is_expected.not_to be_valid }
   end
 
   describe "when story_id is nil" do
     before { @fragment.story_id = nil }
     
-    it { should_not be_valid }
+    it { is_expected.not_to be_valid }
   end
 end

@@ -19,33 +19,36 @@ describe Story do
   
   subject { @story }
   
-  it { should respond_to(:title) }
-  it { should respond_to(:creator) }
+  it { is_expected.to respond_to(:title) }
+  it { is_expected.to respond_to(:creator) }
   
-  it { should respond_to(:fragments) }
-  it { should respond_to(:authors) }
+  it { is_expected.to respond_to(:fragments) }
+  it { is_expected.to respond_to(:authors) }
   
-  its(:creator) { should eq user }
+  describe '#creator' do
+    subject { super().creator }
+    it { is_expected.to eq user }
+  end
   
-  it { should be_valid }
+  it { is_expected.to be_valid }
 
   describe "invalid titles" do
     context "blank title" do
       before { @story.title = "    " }
       
-      it { should_not be_valid }
+      it { is_expected.not_to be_valid }
     end
 
     context "title too short" do
       before { @story.title = '1' }
       
-      it { should_not be_valid }
+      it { is_expected.not_to be_valid }
     end
   end
 
   describe "blank creator id" do
     before { @story.creator_id = nil }
     
-    it { should_not be_valid }
+    it { is_expected.not_to be_valid }
   end
 end
