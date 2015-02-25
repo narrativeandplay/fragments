@@ -7,13 +7,13 @@ describe UsersController do
     it "assigns the requested user to @user" do
       get :show, id: user
       
-      assigns(:user).should eq user
+      expect(assigns(:user)).to eq user
     end
     
     it "renders the 'show' view" do
       get :show, id: user
       
-      response.should render_template :show
+      expect(response).to render_template :show
     end
   end
 

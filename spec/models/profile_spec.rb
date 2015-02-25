@@ -9,24 +9,27 @@ describe Profile do
   
   subject { @profile }
   
-  it { should respond_to(:pen_name) }
-  it { should respond_to(:description) }
+  it { is_expected.to respond_to(:pen_name) }
+  it { is_expected.to respond_to(:description) }
   
-  it { should respond_to(:user) }
+  it { is_expected.to respond_to(:user) }
   
-  its(:user) { should eq user}
+  describe '#user' do
+    subject { super().user }
+    it { is_expected.to eq user}
+  end
   
-  it { should be_valid }
+  it { is_expected.to be_valid }
 
   describe "when user_id is nil" do
     before { @profile.user_id = nil }
     
-    it { should_not be_valid }
+    it { is_expected.not_to be_valid }
   end
 
   describe "when pen name is blank" do
     before { @profile.pen_name = "  " }
     
-    it { should_not be_valid }
+    it { is_expected.not_to be_valid }
   end
 end
