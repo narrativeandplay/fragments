@@ -23,4 +23,10 @@ FactoryGirl.define do
     description "Lorem Ipsum"
     user
   end
+
+  factory :comment do
+    text "Lorem Ipsum"
+    user
+    story
+  end
 end
