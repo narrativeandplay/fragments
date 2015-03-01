@@ -1,0 +1,6 @@
+h5[style="color:#008CBA"] Leave a comment
+/ The autocomplete off is to prevent the submit button from being disabled
+= form_for [@story, @comment], remote: true, html: { autocomplete: "off"  } do |f|
+  == render partial: 'shared/form_errors', locals: { form_object: @comment }
+  = f.text_area :text, label: false
+  = f.submit class: 'tiny radius button', value: "Comment", data: { 'disable-with' => 'Submitting...' }

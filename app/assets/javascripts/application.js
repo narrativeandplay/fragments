@@ -22,7 +22,7 @@
 $(function() {
     $(document).foundation({
         offcanvas : {
-            open_method: 'overlap' // Sets method in which offcanvas opens, can also be 'overlap'
+            open_method: 'move' // Sets method in which offcanvas opens, can also be 'overlap'
         }
     });
 });
@@ -30,7 +30,7 @@ $(function() {
 $(document).on('page:load', function(){
     $(document).foundation({
         offcanvas : {
-            open_method: 'overlap' // Sets method in which offcanvas opens, can also be 'overlap'
+            open_method: 'move' // Sets method in which offcanvas opens, can also be 'overlap'
         }
     });
 });

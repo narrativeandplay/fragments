@@ -11,7 +11,9 @@ Fragments::Application.routes.draw do
   end
   resources :stories, only: [:index, :new, :create, :show] do
     get 'page/:page', action: :index, on: :collection
-    
+
+    resources :comments, only: [:create]
+
     resources :fragments, only: [:show, :create, :update] do
       get 'read' => 'stories#read'
     end
