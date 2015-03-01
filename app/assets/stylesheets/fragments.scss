@@ -3,6 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #fragment-content {
   padding-left: 30px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 #continue {
