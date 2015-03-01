@@ -14,6 +14,7 @@ class Story < ActiveRecord::Base
   
   has_many :fragments, inverse_of: :story
   has_many :authors, -> { uniq }, through: :fragments
+  has_many :comments, inverse_of: :story
   
   accepts_nested_attributes_for :fragments
 
