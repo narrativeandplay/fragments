@@ -1,0 +1,10 @@
+aside.left-off-canvas-menu#comments
+  .large-12.columns
+    h4 Comments
+
+    #comment-form
+      - if user_signed_in?
+        == render partial: 'comments/new'
+
+    #shown-comments
+      == render partial: 'comments/show'

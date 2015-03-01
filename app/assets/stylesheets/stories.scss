@@ -56,3 +56,32 @@
 #back {
   padding-top: 10px;
 }
+
+.large-icon {
+  font-size: 1.3rem;
+}
+
+#hint-text {
+  display: inline;
+  margin: 0.6rem;
+  font-size: 1rem;
+}
+
+#show-comment {
+  margin-left: -6.7rem;
+  z-index: 1000;
+  position: fixed;
+  top: 4rem;
+  left: 0;
+  transition-property: margin-left;
+  transition-duration: 200ms;
+
+  width: 10rem;
+
+  &:hover {
+    cursor: pointer;
+    transition-property: margin-left;
+    transition-duration: 200ms;
+    margin-left: 0;
+  }
+}

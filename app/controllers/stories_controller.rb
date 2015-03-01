@@ -13,6 +13,8 @@ class StoriesController < ApplicationController
   def show
     @story = Story.find(params[:id])
     @fragment =  @story.fragments.new
+    @comments = @story.comments
+    @comment = Comment.new(story: @story)
     
     gon.fragments = add_author_name(@story.fragments.arrange_serializable(order: :created_at).first)
   end
