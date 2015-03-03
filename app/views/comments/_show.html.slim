@@ -1,0 +1,14 @@
+- @comments.each do |comment|
+  .large-12.columns
+    .row
+      .comment-header
+        .img
+          = gravatar_for comment.user, size: 25
+        .commenter
+          h5 = link_to comment.user.profile.pen_name, user_path(comment.user)
+        .posted
+          = "Posted: #{comment.created_at.localtime.strftime("%e %b %Y %l:%M %p")}"
+      .row
+        = comment.text
+    - if comment != @comments.last
+      hr

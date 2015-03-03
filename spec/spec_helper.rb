@@ -2,7 +2,6 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-require 'rspec/autorun' # Comment out to prevent specs from running twice in Zeus
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -52,7 +51,7 @@ RSpec.configure do |config|
     if Capybara.current_driver == :rack_test
       DatabaseCleaner.strategy = :transaction
     else
-      DatabaseCleaner.strategy = :truncation
+      DatabaseCleaner.strategy = :truncation, { except: %w[public.schema_migrations] }
     end
     DatabaseCleaner.start
   end
@@ -65,4 +64,15 @@ RSpec.configure do |config|
 
   # Include devise test helpers
   config.include Devise::TestHelpers, :type => :controller
+
+  # rspec-rails 3 will no longer automatically infer an example group's spec type
+  # from the file location. You can explicitly opt-in to the feature using this
+  # config option.
+  # To explicitly tag specs without using automatic inference, set the `:type`
+  # metadata manually:
+  #
+  #     describe ThingsController, :type => :controller do
+  #       # Equivalent to being in spec/controllers
+  #     end
+  config.infer_spec_type_from_file_location!
 end

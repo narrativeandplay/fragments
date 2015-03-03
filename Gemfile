@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.1.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.4'
+gem 'rails', '4.2.0'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
@@ -14,7 +14,7 @@ end
 
 group :development, :test do
   # Use RSpec for testing
-  gem 'rspec-rails', '~> 2.14'
+  gem 'rspec-rails', '~> 3.1'
 
   # Use Guard to run tests automatically
   gem 'guard-rspec', '~> 4.0'
@@ -77,7 +77,7 @@ gem 'foundation-icons-sass-rails' # Foundation Icons font
 
 # Use Slim (http://slim-lang.com) as the rendering engine
 # slim-rails is used for automatic view generation
-gem 'slim-rails', '~> 2.0'
+gem 'slim-rails', '~> 3.0'
 
 # Use kaminari for paging
 gem 'kaminari', '~> 0.15'
@@ -98,7 +98,7 @@ gem 'ckeditor', '~> 4.0'
 gem 'gon', '~> 5.0'
 
 # Use JsRoutes for named routes in JS
-gem 'js-routes', '~> 0.9'
+gem 'js-routes', '~> 1.0'
 
 # Use PluggableJs to execute per page JS
 gem "pluggable_js", "~> 2.0"
@@ -110,13 +110,13 @@ gem 'browser', '~> 0.2'
 gem 'devise', '~> 3.1'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails', '~> 5.0.0'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails', '~> 4.1.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

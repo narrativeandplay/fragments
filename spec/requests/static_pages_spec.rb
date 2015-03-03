@@ -6,29 +6,29 @@ describe "Static Pages" do
   describe "home page" do
     before { visit root_path }
 
-    it { should have_content('Fragments') }
-    it { should have_title('Fragments') }
-    it { should_not have_title('| Home') }
+    it { is_expected.to have_content('Fragments') }
+    it { is_expected.to have_title('Fragments') }
+    it { is_expected.not_to have_title('| Home') }
   end
 
   describe "help page" do
     before { visit help_path }
 
-    it { should have_content('Help') }
-    it { should have_title('Fragments | Help') }
+    it { is_expected.to have_content('Help') }
+    it { is_expected.to have_title('Fragments | Help') }
   end
 
   describe "about page" do
     before { visit about_path }
 
-    it { should have_content('About') }
-    it { should have_title('Fragments | About') }
+    it { is_expected.to have_content('About') }
+    it { is_expected.to have_title('Fragments | About') }
   end
 
   describe "contact page" do
     before { visit contact_path }
 
-    it { should have_content('Contact Us') }
-    it { should have_title('Fragments | Contact Us') }
+    it { is_expected.to have_content('Contact Us') }
+    it { is_expected.to have_title('Fragments | Contact Us') }
   end
 end

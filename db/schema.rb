@@ -11,12 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140119061735) do
+ActiveRecord::Schema.define(version: 20150225054307) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "fragments", force: true do |t|
+  create_table "comments", force: :cascade do |t|
+    t.text     "text"
+    t.integer  "user_id"
+    t.integer  "story_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "comments", ["story_id"], name: "index_comments_on_story_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "fragments", force: :cascade do |t|
     t.text     "content"
     t.integer  "author_id"
     t.integer  "story_id"
@@ -28,7 +39,7 @@ ActiveRecord::Schema.define(version: 20140119061735) do
   add_index "fragments", ["author_id"], name: "index_fragments_on_author_id", using: :btree
   add_index "fragments", ["story_id"], name: "index_fragments_on_story_id", using: :btree
 
-  create_table "profiles", force: true do |t|
+  create_table "profiles", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "pen_name"
     t.text     "description"
@@ -36,7 +47,7 @@ ActiveRecord::Schema.define(version: 20140119061735) do
     t.datetime "updated_at"
   end
 
-  create_table "stories", force: true do |t|
+  create_table "stories", force: :cascade do |t|
     t.string   "title"
     t.integer  "creator_id"
     t.datetime "created_at"
@@ -46,7 +57,7 @@ ActiveRecord::Schema.define(version: 20140119061735) do
   add_index "stories", ["creator_id"], name: "index_stories_on_creator_id", using: :btree
   add_index "stories", ["title"], name: "index_stories_on_title", using: :btree
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "username",               default: "", null: false
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -66,4 +77,6 @@ ActiveRecord::Schema.define(version: 20140119061735) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
+  add_foreign_key "comments", "stories"
+  add_foreign_key "comments", "users"
 end
