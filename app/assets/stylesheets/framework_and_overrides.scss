@@ -50,8 +50,8 @@ footer {
 
 // CSS styling for devise errors
 #error_explanation {
-  @extend .panel;
-  @extend .radius;
+  @include panel;
+  @include radius;
   @extend .alert-box;
   
   background-color: $alert-color;
