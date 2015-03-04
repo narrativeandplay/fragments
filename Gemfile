@@ -65,7 +65,7 @@ end
 gem 'pry-rails'
 
 # Use Foundation as front-end framework
-gem 'foundation-rails', '~> 5.3'
+gem 'foundation-rails', '~> 5.3.0'
 gem 'foundation_rails_helper', github: 'benedictleejh/foundation_rails_helper' # Form styling in Foundation
 gem 'foundation-icons-sass-rails' # Foundation Icons font
 
