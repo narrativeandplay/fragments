@@ -86,6 +86,7 @@ GEM
     coffee-script-source (1.9.1)
     d3-rails (3.5.2)
       railties (>= 3.1)
+    dalli (2.7.2)
     database_cleaner (1.4.0)
     debug_inspector (0.0.2)
     devise (3.4.1)
@@ -313,6 +314,7 @@ DEPENDENCIES
   ckeditor (~> 4.0)
   coffee-rails (~> 4.1.0)
   d3-rails (~> 3.3)
+  dalli
   database_cleaner (~> 1.2)
   devise (~> 3.1)
   factory_girl_rails (~> 4.2)

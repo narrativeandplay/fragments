@@ -10,6 +10,7 @@ gem 'pg'
 
 group :production do
   gem 'rails_12factor'
+  gem 'dalli'
 end
 
 group :development, :test do
