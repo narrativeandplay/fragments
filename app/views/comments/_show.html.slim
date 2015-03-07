@@ -7,7 +7,8 @@
         .commenter
           h5 = link_to comment.user.profile.pen_name, user_path(comment.user)
         .posted
-          = "Posted: #{comment.created_at.localtime.strftime("%e %b %Y %l:%M %p")}"
+          ' Posted:
+          = local_time(comment.created_at, "%e %b %Y %l:%M %p")
       .row
         = comment.text
     - if comment != @comments.last
