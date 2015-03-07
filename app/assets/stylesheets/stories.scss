@@ -85,3 +85,15 @@
     margin-left: 0;
   }
 }
+
+.old {
+  stroke: black;
+}
+
+.recent {
+  stroke: mix(black, green, 50);
+}
+
+.new {
+  stroke: green;
+}
