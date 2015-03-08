@@ -17,17 +17,10 @@
 //= require ckeditor/init
 //= require d3
 //= require js-routes
+//= require local_time
 //= require_tree .
 
-$(function() {
-    $(document).foundation({
-        offcanvas : {
-            open_method: 'move' // Sets method in which offcanvas opens, can also be 'overlap'
-        }
-    });
-});
-
-$(document).on('page:load', function(){
+$(document).on('page:change', function(){
     $(document).foundation({
         offcanvas : {
             open_method: 'move' // Sets method in which offcanvas opens, can also be 'overlap'

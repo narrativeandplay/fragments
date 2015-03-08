@@ -169,6 +169,8 @@ GEM
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
+    local_time (1.0.2)
+      coffee-rails
     loofah (2.0.1)
       nokogiri (>= 1.5.9)
     lumberjack (1.0.9)
@@ -341,6 +343,7 @@ DEPENDENCIES
   kaminari (~> 0.15)
   launchy
   libnotify (~> 0.8)
+  local_time (~> 1.0)
   pg
   pluggable_js (~> 2.0)
   pry-rails
