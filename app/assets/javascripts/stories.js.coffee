@@ -22,17 +22,27 @@ window['stories#show'] = (data) ->
   
   link = svg.selectAll(".link").data(links).enter().append("path").attr("class", "link").attr("d", diagonal)
   
-  circle = svg.selectAll(".circle").data(nodes).enter().append("g").attr("class", "circle right-off-canvas-toggle")
+  circle = svg.selectAll(".circle").data(nodes).enter().append("g").classed({
+    'circle': true
+    'right-off-canvas-toggle': true
+    'old': (d, i) ->
+      moment().diff(moment(d.created_at), 'hours', true) > 36
+    'recent': (d, i) ->
+      time_diff = moment().diff(moment(d.created_at), 'hours', true)
+      time_diff <= 36 && time_diff >= 24
+    'new': (d, i) ->
+      moment().diff(moment(d.created_at), 'hours', true) < 24
+  })
 
-  circle.each( (d) -> $(this).data('fragment-data', d))
+  circle.each( (d) ->
+    $(this).data('fragment-data', d)
+  )
   
   el = circle.append("circle").attr("cx", (d) ->
     d.x
   ).attr("cy", (d) ->
     d.y
   ).attr("r", radius).style("fill", (d) ->
-    color d.author_id
-  ).style("stroke", (d) ->
     color d.author_id
   ).append("title").text((d) ->
     d.name
