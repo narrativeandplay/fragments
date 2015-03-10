@@ -13,6 +13,7 @@ FactoryGirl.define do
   
   factory :fragment, aliases: [:parent] do
     content "Lorem Ipsum"
+    intensity 1
     author
     story
     parent nil
