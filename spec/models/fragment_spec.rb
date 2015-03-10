@@ -24,6 +24,7 @@ describe Fragment do
   subject { @fragment }
   
   it { is_expected.to respond_to(:content) }
+  it { is_expected.to respond_to :intensity}
   
   it { is_expected.to respond_to(:author) }
   it { is_expected.to respond_to(:story) }
@@ -56,6 +57,24 @@ describe Fragment do
   describe "when story_id is nil" do
     before { @fragment.story_id = nil }
     
+    it { is_expected.not_to be_valid }
+  end
+
+  describe "when intensity is nil" do
+    before { @fragment.intensity = nil }
+
+    it { is_expected.not_to be_valid }
+  end
+
+  describe "when intensity is negative" do
+    before { @fragment.intensity = -1 }
+
+    it { is_expected.not_to be_valid }
+  end
+
+  describe "when intensity is floating point number" do
+    before { @fragment.intensity = 1.2 }
+
     it { is_expected.not_to be_valid }
   end
 end
