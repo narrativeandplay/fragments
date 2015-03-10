@@ -31,7 +31,7 @@
 }
 
 .circle {
-  stroke-width: 1.5px;
+  stroke-width: 3px;
   stroke-opacity: 1.0;
   fill-opacity: 1.0;
   
@@ -88,6 +88,6 @@
 
 @for $i from 0 through 10 {
   .intensity-#{$i} {
-    stroke: mix(black, red, $i * 10);
+    stroke: mix(red, black, $i * 10);
   }
 }
