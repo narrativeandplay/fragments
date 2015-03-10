@@ -1,10 +1,20 @@
 h1 New Story
 
+
 = form_for @story do |f|
   == render 'new_story_errors'
   = f.text_field :title
   = f.fields_for :fragment, @fragment do |p|
     = p.label :content
     = p.cktext_area :content, ckeditor: { toolbar: editor_toolbar, removePlugins: 'elementspath', skin: 'office2013' }
+    br
+    = p.label :intensity
+    .row
+      .medium-11.columns
+        #intensity-slider.range-slider[data-options="display_selector: #intensity-value; start:0; end:10;" data-slider]
+          span.range-slider-handle[role="slider"]
+          span.range-slider-active-segment
+      .medium-1.columns.centered
+        = p.text_field :intensity, style: "display: block;margin-top: 10px;", label: false
   br
   = f.submit
