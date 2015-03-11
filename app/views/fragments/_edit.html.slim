@@ -7,7 +7,24 @@
     = f.label :content, "Content:"  
     = f.cktext_area :content, id: 'edit_form', ckeditor: { toolbar: editor_toolbar, removePlugins: 'elementspath', skin: 'office2013' }
     br
+      = f.label :intensity
+      .row
+        .medium-11.columns
+          #edit-intensity-slider.range-slider[data-options="start:0; end:10;" data-slider=@fragment.intensity]
+            span.range-slider-handle[role="slider"]
+            span.range-slider-active-segment
+        .medium-1.columns
+          = f.text_field :intensity, style: "display: block;margin-top: 10px;", label: false
+    br
     = f.submit class: 'small radius button', data: { 'disable-with' => 'Updating...' }
   
   a.close-reveal-modal
     .fi-x
+
+coffee:
+  $('#edit-intensity-slider').on 'change.fdntn.slider', ->
+    $('#fragment_intensity').val($(this).attr('data-slider'))
+
+  $('#fragment_intensity').on 'input input-intensity', ->
+    new_val = parseInt($(this).val())
+    $('#edit-intensity-slider').attr 'data-slider', new_val

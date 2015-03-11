@@ -20,7 +20,7 @@
 //= require local_time
 //= require_tree .
 
-$(document).on('page:change', function(){
+$(document).on('ready page:load', function(){
     $(document).foundation({
         offcanvas : {
             open_method: 'move' // Sets method in which offcanvas opens, can also be 'overlap'
