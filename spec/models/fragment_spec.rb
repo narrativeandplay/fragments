@@ -77,4 +77,10 @@ describe Fragment do
 
     it { is_expected.not_to be_valid }
   end
+
+  describe "when intensity is greater than 10" do
+    before { @fragment.intensity = 11 }
+
+    it { is_expected.not_to be_valid }
+  end
 end
