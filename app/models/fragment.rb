@@ -14,6 +14,8 @@
 class Fragment < ActiveRecord::Base
   belongs_to :author, class_name: 'User'
   belongs_to :story, inverse_of: :fragments
+
+  has_many :facts
   
   has_ancestry
   
