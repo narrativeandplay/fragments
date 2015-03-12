@@ -29,4 +29,9 @@ FactoryGirl.define do
     user
     story
   end
+
+  factory :fact do
+    text "Lorem Ipsum"
+    fragment
+  end
 end
