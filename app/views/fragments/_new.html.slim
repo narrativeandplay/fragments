@@ -24,7 +24,8 @@
 
 coffee:
   $('#intensity-slider').on 'change.fdntn.slider', ->
-    $('#new_fragment_intensity').val($('#intensity-slider').attr('data-slider'))
+    new_val = parseInt($(this).val())
+    $('#new_fragment_intensity').val(new_val)
 
   $('#new_fragment_intensity').on 'input', ->
     new_val = parseInt($(this).val())
