@@ -125,6 +125,9 @@ gem 'jbuilder', '~> 2.0'
 # Use local_time to display times in the client's local time
 gem 'local_time', '~> 1.0'
 
+# Use cocoon to handle nested forms
+gem "cocoon"
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

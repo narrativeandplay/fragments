@@ -18,6 +18,7 @@
 //= require d3
 //= require js-routes
 //= require local_time
+//= require cocoon
 //= require_tree .
 
 $(document).on('page:change', function(){
