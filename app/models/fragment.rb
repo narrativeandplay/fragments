@@ -17,7 +17,7 @@ class Fragment < ActiveRecord::Base
 
   has_many :facts, inverse_of: :fragment
 
-  accepts_nested_attributes_for :facts
+  accepts_nested_attributes_for :facts, reject_if: lambda { |f| f[:text].blank? }, :allow_destroy => true
   
   has_ancestry
   

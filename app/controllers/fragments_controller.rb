@@ -12,7 +12,7 @@ class FragmentsController < ApplicationController
   def create
     @story = Story.find(params[:story_id])
     parent_fragment = Fragment.find(fragment_params[:parent])
-    @fragment = @story.fragments.build(content: fragment_params[:content], parent: parent_fragment, author: current_user)
+    @fragment = @story.fragments.build(fragment_params.merge  author: current_user, parent: parent_fragment )
     
     if @fragment.save
       render js: "window.location = '#{story_url(@story)}'"
@@ -28,7 +28,7 @@ class FragmentsController < ApplicationController
   
   private
   def fragment_params
-    params.require(:fragment).permit(:content, :parent)
+    params.require(:fragment).permit(:content, :parent, facts_attributes: [:id, :text, :_destroy])
   end
   
   def check_login
