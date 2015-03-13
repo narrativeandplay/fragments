@@ -85,3 +85,16 @@
     margin-left: 0;
   }
 }
+
+.inline {
+  display: inline;
+}
+
+#facts {
+  overflow-y: scroll;
+  height: rem-calc(300px);
+}
+
+.pad-top {
+  margin-top: 10px;
+}

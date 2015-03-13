@@ -1,14 +1,24 @@
 #new-fragment-form.reveal-modal[data-reveal]
   h3 New Fragment
-  = form_for [@story, @fragment], remote: true do |f|
-    = f.hidden_field :parent, value: @fragment.id
-    = f.label :story, "Story: #{@story.title}"
-    = f.label :author, "Author: #{current_user.profile.pen_name}"
-    br
-    = f.label :content, "Content:"  
-    = f.cktext_area :content,  ckeditor: { toolbar: editor_toolbar, removePlugins: 'elementspath', skin: 'office2013' }
-    br
-    = f.submit class: 'small radius button', data: { 'disable-with' => 'Submitting...' }
-  
+  = form_for [@story, @fragment], remote: true do |fragment_form|
+    .row
+      .large-12.columns
+        = fragment_form.hidden_field :parent, value: @fragment.id
+        = fragment_form.label :story, "Story: #{@story.title}"
+        = fragment_form.label :author, "Author: #{current_user.profile.pen_name}"
+    .row
+      .large-8.columns
+        = fragment_form.label :content, "Content:"
+        = fragment_form.cktext_area :content,  ckeditor: { toolbar: editor_toolbar, removePlugins: 'elementspath', skin: 'office2013' }
+      .large-4.columns
+        label[style="display: inline; margin-right:10px;"] Facts
+        = link_to_add_association '', fragment_form, :facts, partial: 'facts/fact_fields', class: 'fi-plus', data: { :'association-insertion-node' => '#facts', :'association-insertion-method' => 'append' }
+        .large-12.columns#facts
+          = fragment_form.fields_for :facts do |facts_form|
+            = render partial: 'facts/fact_fields', locals: { f: facts_form }
+    .row
+      br
+        = fragment_form.submit class: 'small radius button', data: { 'disable-with' => 'Submitting...' }
+
   a.close-reveal-modal
     .fi-x

@@ -1,0 +1,5 @@
+.fact-fields.row
+  .large-11.columns.small
+    = f.text_field :text, label: false
+  .large-1.columns.pad-top
+    = link_to_remove_association '', f, wrapper_class: 'fact-fields', class: 'fi-minus'
