@@ -25,7 +25,7 @@
                                           title: 'Add a new fact',
                                           :'data-tooltip' => "",
                                           data: { :'association-insertion-node' => '#facts', :'association-insertion-method' => 'append' }
-          tbody#facts
+          tbody.facts-table-body#facts
             = fragment_form.fields_for :facts do |facts_form|
               = render partial: 'facts/fact_fields', locals: { f: facts_form }
     .row

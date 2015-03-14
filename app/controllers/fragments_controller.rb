@@ -9,6 +9,7 @@ class FragmentsController < ApplicationController
     @story = @fragment.story
 
     @facts = @fragment.path.map { |fragment| fragment.facts }.flatten
+    @ancestor_facts = @fragment.ancestors.map { |fragment| fragment.facts }.flatten
   end
   
   def create

@@ -1,13 +1,37 @@
 #edit-fragment-form.reveal-modal[data-reveal]
   h3 Edit Fragment
-  = form_for [@story, @fragment], remote: true do |f|
-    = f.label :story, "Story: #{@story.title}"
-    = f.label :author, "Author: #{@fragment.author.profile.pen_name}"
-    br
-    = f.label :content, "Content:"  
-    = f.cktext_area :content, id: 'edit_form', ckeditor: { toolbar: editor_toolbar, removePlugins: 'elementspath', skin: 'office2013' }
-    br
-    = f.submit class: 'small radius button', data: { 'disable-with' => 'Updating...' }
+  = form_for [@story, @fragment], remote: true do |fragment_form|
+    .row
+      .large-12.columns
+        = fragment_form.label :story, "Story: #{@story.title}"
+        = fragment_form.label :author, "Author: #{@fragment.author.profile.pen_name}"
+    .row
+      .large-8.columns
+        = fragment_form.label :content, "Content:"
+        = fragment_form.cktext_area :content, id: 'edit_form', ckeditor: { toolbar: editor_toolbar, removePlugins: 'elementspath', skin: 'office2013' }
+      .large-4.columns
+        table[width="100%"]
+          thead
+            tr[style="display:block;"]
+              th Facts
+              th[width="10%"]
+                = link_to_add_association '',
+                                          fragment_form,
+                                          :facts,
+                                          partial: 'facts/fact_fields',
+                                          class: 'has-tip tip-right fi-plus',
+                                          :'aria-haspopup' => true,
+                                          title: 'Add a new fact',
+                                          :'data-tooltip' => "",
+                                          data: {:'association-insertion-node' => '#edit-facts', :'association-insertion-method' => 'append'}
+          tbody.facts-table-body#edit-facts
+            - @ancestor_facts.each do |fact|
+              = render 'facts/old_fact', fact: fact
+            = fragment_form.fields_for :facts do |facts_form|
+              = render partial: 'facts/fact_fields', locals: {f: facts_form}
+    .row
+      br
+      = fragment_form.submit class: 'small radius button', data: { 'disable-with' => 'Updating...' }
   
   a.close-reveal-modal
     .fi-x
