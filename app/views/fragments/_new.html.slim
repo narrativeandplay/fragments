@@ -11,11 +11,23 @@
         = fragment_form.label :content, "Content:"
         = fragment_form.cktext_area :content,  ckeditor: { toolbar: editor_toolbar, removePlugins: 'elementspath', skin: 'office2013' }
       .large-4.columns
-        label[style="display: inline; margin-right:10px;"] Facts
-        = link_to_add_association '', fragment_form, :facts, partial: 'facts/fact_fields', class: 'fi-plus', data: { :'association-insertion-node' => '#facts', :'association-insertion-method' => 'append' }
-        .large-12.columns#facts
-          = fragment_form.fields_for :facts do |facts_form|
-            = render partial: 'facts/fact_fields', locals: { f: facts_form }
+        table[width="100%"]
+          thead
+            tr[style="display:block;"]
+              th Facts
+              th[width="10%"]
+                = link_to_add_association '',
+                                          fragment_form,
+                                          :facts,
+                                          partial: 'facts/fact_fields',
+                                          class: 'has-tip tip-right fi-plus',
+                                          :'aria-haspopup' => true,
+                                          title: 'Add a new fact',
+                                          :'data-tooltip' => "",
+                                          data: { :'association-insertion-node' => '#facts', :'association-insertion-method' => 'append' }
+          tbody#facts
+            = fragment_form.fields_for :facts do |facts_form|
+              = render partial: 'facts/fact_fields', locals: { f: facts_form }
     .row
       br
         = fragment_form.submit class: 'small radius button', data: { 'disable-with' => 'Submitting...' }

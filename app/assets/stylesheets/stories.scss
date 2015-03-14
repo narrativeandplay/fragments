@@ -91,10 +91,22 @@
 }
 
 #facts {
-  overflow-y: scroll;
+  overflow-y: auto;
   height: rem-calc(300px);
+  vertical-align: middle;
+  display: block;
+}
+
+.old-fact {
+  width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .pad-top {
   margin-top: 10px;
+}
+
+.tooltip {
+  z-index: 1006;
 }

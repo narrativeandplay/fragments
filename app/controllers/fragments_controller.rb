@@ -7,6 +7,8 @@ class FragmentsController < ApplicationController
   def show
     @fragment = Fragment.find(params[:id])
     @story = @fragment.story
+
+    @facts = @fragment.path.map { |fragment| fragment.facts }.flatten
   end
   
   def create
