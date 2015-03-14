@@ -2,9 +2,31 @@ h1 New Story
 
 = form_for @story do |f|
   == render 'new_story_errors'
-  = f.text_field :title
-  = f.fields_for :fragment, @fragment do |p|
-    = p.label :content
-    = p.cktext_area :content, ckeditor: { toolbar: editor_toolbar, removePlugins: 'elementspath', skin: 'office2013' }
+  .row
+    .large-12.columns
+      = f.text_field :title
+  .row
+    = f.fields_for :fragment, @fragment do |p|
+      .large-8.columns
+        = p.label :content
+        = p.cktext_area :content, ckeditor: { toolbar: editor_toolbar, removePlugins: 'elementspath', skin: 'office2013' }
+      .large-4.columns
+        table[width="100%"]
+          thead
+            tr[style="display:block;"]
+              th Facts
+              th[width="10%"]
+                = link_to_add_association '',
+                                          p,
+                                          :facts,
+                                          partial: 'facts/fact_fields',
+                                          class: 'has-tip tip-right fi-plus',
+                                          :'aria-haspopup' => true,
+                                          title: 'Add a new fact',
+                                          :'data-tooltip' => "",
+                                          data: {:'association-insertion-node' => '#facts', :'association-insertion-method' => 'append'}
+          tbody.facts-table-body#facts
+            = p.fields_for :facts do |facts_form|
+              = render partial: 'facts/fact_fields', locals: {f: facts_form}
   br
   = f.submit

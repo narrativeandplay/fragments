@@ -44,7 +44,7 @@ class StoriesController < ApplicationController
   end
   
   def story_fragment_params
-    params.require(:story).permit(fragment: [:content, :parent])[:fragment]
+    params.require(:story).permit(fragment: [:content, :parent, facts_attributes: [:id, :text, :_destroy]])[:fragment]
   end
 
   def add_author_name(hash)
