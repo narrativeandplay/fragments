@@ -86,7 +86,7 @@ gem 'ancestry', github: 'stefankroes/ancestry'
 gem 'd3-rails', '~> 3.3'
 
 # Use ckeditor for rich text editing
-gem 'ckeditor', '~> 4.0'
+#gem 'ckeditor', '~> 4.0'
 
 # Use gon to get rails variables in JS
 gem 'gon', '~> 5.0'
@@ -132,6 +132,8 @@ group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
+
+gem 'rails_12factor', group: :production
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
