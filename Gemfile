@@ -88,7 +88,7 @@ gem 'ancestry', github: 'stefankroes/ancestry'
 gem 'd3-rails', '~> 3.3'
 
 # Use ckeditor for rich text editing
-#gem 'ckeditor', '~> 4.0'
+gem 'ckeditor', '~> 4.0'
 
 # Use gon to get rails variables in JS
 gem 'gon', '~> 5.0'
