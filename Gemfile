@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.2.0'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 
@@ -86,7 +88,7 @@ gem 'ancestry', github: 'stefankroes/ancestry'
 gem 'd3-rails', '~> 3.3'
 
 # Use ckeditor for rich text editing
-gem 'ckeditor', '~> 4.0'
+#gem 'ckeditor', '~> 4.0'
 
 # Use gon to get rails variables in JS
 gem 'gon', '~> 5.0'
@@ -127,6 +129,8 @@ gem 'local_time', '~> 1.0'
 
 # Use cocoon to handle nested forms
 gem "cocoon"
+
+gem 'rails_12factor', group: :production
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
