@@ -103,6 +103,12 @@
   word-wrap: break-word;
 }
 
+.fact-text {
+  input {
+    margin-bottom: 0;
+  }
+}
+
 .pad-top {
   margin-top: 10px;
 }

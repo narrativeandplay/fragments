@@ -1,3 +1,4 @@
 tr.fact-fields
-  td.fact-text = f.text_field :text, label: false
+  td.fact-text
+    = f.text_field :text, label: false, maxlength: Fact.get_maximum(:text), class: 'fact-text-field'
   td = link_to_remove_association '', f, wrapper_class: 'fact-fields', class: 'fi-minus'
