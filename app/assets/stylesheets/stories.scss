@@ -107,6 +107,11 @@
   input {
     margin-bottom: 0;
   }
+
+  .chars-remaining {
+    color: darkgrey;
+    font-style: italic;
+  }
 }
 
 .pad-top {

@@ -1,4 +1,11 @@
 tr.fact-fields
   td.fact-text
     = f.text_field :text, label: false, maxlength: Fact.get_maximum(:text), class: 'fact-text-field'
+    span.chars-remaining
+      | 255 characters remaining
   td = link_to_remove_association '', f, wrapper_class: 'fact-fields', class: 'fi-minus'
+
+coffee:
+  $('.fact-text-field').on 'input', ->
+    rem_chars = @maxLength - @value.length
+    $(this).siblings('.chars-remaining').text "#{rem_chars} #{if rem_chars == 1 then "character" else "characters"} remaining"
