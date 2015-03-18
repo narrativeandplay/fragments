@@ -24,7 +24,7 @@ class FragmentsController < ApplicationController
   
   def update
     @fragment = Fragment.find(params[:id])
-    if @fragment.update_attributes(content: fragment_params[:content])
+    if @fragment.update_attributes(fragment_params)
       render js: "window.location = '#{story_url(@fragment.story)}'"
     end
   end
