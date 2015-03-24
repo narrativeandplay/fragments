@@ -128,6 +128,8 @@ gem 'local_time', '~> 1.0'
 # Use moment.js to compute difference between times
 gem 'momentjs-rails', '~> 2.9'
 
+gem 'rails_12factor', group: :production
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
