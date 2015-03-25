@@ -1,12 +1,9 @@
-module ActiveRecord::CustomMethods
+module Introspection
   extend ActiveSupport::Concern
 
-  module ClassMethods
+  class_methods do
     def get_maximum(attribute)
       validators_on(attribute).select{|v| v.class == ActiveModel::Validations::LengthValidator}.first.options[:maximum]
     end
   end
 end
-
-# include the extension
-ActiveRecord::Base.send(:include, ActiveRecord::CustomMethods)
