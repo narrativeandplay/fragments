@@ -12,3 +12,15 @@ aside.right-off-canvas-menu
   .row
     #fragment-content
       == @fragment.content
+
+  .row
+    .medium-12.columns
+      table#fragment-facts[width="100%"]
+        thead
+          tr
+            th Facts
+
+        tbody
+          - @fragment.facts.each do |fact|
+            tr
+              td = fact.text
