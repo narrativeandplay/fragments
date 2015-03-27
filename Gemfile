@@ -127,6 +127,9 @@ gem 'jbuilder', '~> 2.0'
 # Use local_time to display times in the client's local time
 gem 'local_time', '~> 1.0'
 
+# Use RailsAdmin for admin pages
+gem 'rails_admin', github: 'sferik/rails_admin'
+
 # Use cocoon to handle nested forms
 gem "cocoon"
 
