@@ -10,25 +10,6 @@ GIT
       tzinfo (~> 1.2, >= 1.2.2)
 
 GIT
-  remote: git://github.com/sferik/rails_admin.git
-  revision: 3b27b4081926a4a7e200ede45728b92a3f096cf1
-  specs:
-    rails_admin (0.6.7)
-      builder (~> 3.1)
-      coffee-rails (~> 4.0)
-      font-awesome-rails (>= 3.0, < 5)
-      haml (~> 4.0)
-      jquery-rails (>= 3.0, < 5)
-      jquery-ui-rails (~> 5.0)
-      kaminari (~> 0.14)
-      nested_form (~> 0.3)
-      rack-pjax (~> 0.7)
-      rails (~> 4.0)
-      remotipart (~> 1.0)
-      safe_yaml (~> 1.0)
-      sass-rails (>= 4.0, < 6)
-
-GIT
   remote: git://github.com/stefankroes/ancestry.git
   revision: 74a0ada901fee8d0b7293bcb6425788faa256745
   specs:
@@ -73,7 +54,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    addressable (2.3.7)
+    addressable (2.3.8)
     annotate (2.6.8)
       activerecord (>= 3.2, <= 4.3)
       rake (~> 10.4)
@@ -255,6 +236,20 @@ GEM
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
+    rails_admin (0.6.7)
+      builder (~> 3.1)
+      coffee-rails (~> 4.0)
+      font-awesome-rails (>= 3.0, < 5)
+      haml (~> 4.0)
+      jquery-rails (>= 3.0, < 5)
+      jquery-ui-rails (~> 5.0)
+      kaminari (~> 0.14)
+      nested_form (~> 0.3)
+      rack-pjax (~> 0.7)
+      rails (~> 4.0)
+      remotipart (~> 1.0)
+      safe_yaml (~> 1.0)
+      sass-rails (>= 4.0, < 6)
     rails_layout (1.0.25)
     rails_serve_static_assets (0.0.4)
     rails_stdout_logging (0.0.3)
@@ -388,7 +383,7 @@ DEPENDENCIES
   pry-rails
   rails (= 4.2.0)
   rails_12factor
-  rails_admin!
+  rails_admin
   rails_layout
   rb-readline
   rspec-rails (~> 3.1)

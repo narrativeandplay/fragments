@@ -126,7 +126,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'local_time', '~> 1.0'
 
 # Use RailsAdmin for admin pages
-gem 'rails_admin', github: 'sferik/rails_admin'
+gem 'rails_admin'
 
 # Use moment.js to compute difference between times
 gem 'momentjs-rails', '~> 2.9'
