@@ -65,7 +65,7 @@ end
 gem 'pry-rails'
 
 # Use Foundation as front-end framework
-gem 'foundation-rails', '~> 5.3.0'
+gem 'foundation-rails', '< 6', github: 'zurb/foundation-rails'
 gem 'foundation_rails_helper', github: 'benedictleejh/foundation_rails_helper' # Form styling in Foundation
 gem 'foundation-icons-sass-rails' # Foundation Icons font
 
@@ -105,7 +105,6 @@ gem 'devise', '~> 3.1'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.0'
-gem 'sass', '~> 3.2.0'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
