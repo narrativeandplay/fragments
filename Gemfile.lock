@@ -10,6 +10,26 @@ GIT
       tzinfo (~> 1.2, >= 1.2.2)
 
 GIT
+  remote: git://github.com/narrativeandplay/rails_admin.git
+  revision: 52d2e9eb23aba9b7e6e0bb10aa6170ba429a0a2c
+  branch: precompile-error-fixes
+  specs:
+    rails_admin (0.6.7)
+      builder (~> 3.1)
+      coffee-rails (~> 4.0)
+      font-awesome-rails (>= 3.0, < 5)
+      haml (~> 4.0)
+      jquery-rails (>= 3.0, < 5)
+      jquery-ui-rails (~> 5.0)
+      kaminari (~> 0.14)
+      nested_form (~> 0.3)
+      rack-pjax (~> 0.7)
+      rails (~> 4.0)
+      remotipart (~> 1.0)
+      safe_yaml (~> 1.0)
+      sass-rails (>= 4.0, < 6)
+
+GIT
   remote: git://github.com/stefankroes/ancestry.git
   revision: 74a0ada901fee8d0b7293bcb6425788faa256745
   specs:
@@ -241,20 +261,6 @@ GEM
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
-    rails_admin (0.6.7)
-      builder (~> 3.1)
-      coffee-rails (~> 4.0)
-      font-awesome-rails (>= 3.0, < 5)
-      haml (~> 4.0)
-      jquery-rails (>= 3.0, < 5)
-      jquery-ui-rails (~> 5.0)
-      kaminari (~> 0.14)
-      nested_form (~> 0.3)
-      rack-pjax (~> 0.7)
-      rails (~> 4.0)
-      remotipart (~> 1.0)
-      safe_yaml (~> 1.0)
-      sass-rails (>= 4.0, < 6)
     rails_layout (1.0.25)
     rails_serve_static_assets (0.0.4)
     rails_stdout_logging (0.0.3)
@@ -388,7 +394,7 @@ DEPENDENCIES
   pry-rails
   rails (= 4.2.0)
   rails_12factor
-  rails_admin
+  rails_admin!
   rails_layout
   rb-readline
   rspec-rails (~> 3.1)

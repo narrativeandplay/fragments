@@ -125,7 +125,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'local_time', '~> 1.0'
 
 # Use RailsAdmin for admin pages
-gem 'rails_admin'
+gem 'rails_admin', github: 'narrativeandplay/rails_admin', branch: 'precompile-error-fixes'
 
 # Use moment.js to compute difference between times
 gem 'momentjs-rails', '~> 2.9'
