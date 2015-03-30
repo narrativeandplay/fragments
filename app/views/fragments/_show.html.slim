@@ -17,10 +17,15 @@ aside.right-off-canvas-menu
     .medium-12.columns
       table#fragment-facts[width="100%"]
         thead
-          tr
+          tr[style="display:block"]
             th Facts
 
-        tbody
+        tbody.facts-table-body
+          - @fragment.ancestors.map(&:facts).flatten.each do |fact|
+            tr[style="width=100%"]
+              td = fact.text
           - @fragment.facts.each do |fact|
             tr
-              td = fact.text
+              td[style="width=100%"]
+                span.current-fact = fact.text
+
