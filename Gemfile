@@ -128,6 +128,8 @@ gem 'local_time', '~> 1.0'
 # Use RailsAdmin for admin pages
 gem 'rails_admin', github: 'sferik/rails_admin'
 
+gem 'html_truncator', '~> 0.4'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

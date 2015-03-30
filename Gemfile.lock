@@ -169,6 +169,8 @@ GEM
       tilt
     hike (1.2.3)
     hitimes (1.2.2)
+    html_truncator (0.4.1)
+      nokogiri (~> 1.5)
     i18n (0.7.0)
     jbuilder (2.2.9)
       activesupport (>= 3.0.0, < 5)
@@ -368,6 +370,7 @@ DEPENDENCIES
   gon (~> 5.0)
   guard-rails
   guard-rspec (~> 4.0)
+  html_truncator (~> 0.4)
   jbuilder (~> 2.0)
   jquery-rails
   js-routes (~> 1.0)

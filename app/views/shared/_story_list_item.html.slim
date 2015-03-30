@@ -2,7 +2,7 @@
   .large-12.columns.story-list-item
     h4 = link_to story.title, story_path(story)
     br
-    == story.fragments.first.content.truncate(100, separator: ' ')
+    == HTML_Truncator.truncate story.fragments.first.content, 10
     ul
       li == "Creator: #{link_to story.creator.profile.pen_name, user_path(story.creator)}"
       li = "Contributors: #{story.authors.count}"
