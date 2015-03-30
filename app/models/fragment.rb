@@ -9,6 +9,7 @@
 #  ancestry   :text
 #  created_at :datetime
 #  updated_at :datetime
+#  intensity  :integer
 #
 
 class Fragment < ActiveRecord::Base
