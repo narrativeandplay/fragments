@@ -18,6 +18,31 @@ Fragments::Application.routes.draw do
       get 'read' => 'stories#read'
     end
   end
+
+  namespace :admin do
+    root 'dashboard#dashboard'
+    get 'dashboard'
+
+    resources :users do
+      get 'page/:page', action: :index, on: :collection
+    end
+
+    resources :fragments do
+      get 'page/:page', action: :index, on: :collection
+    end
+
+    resources :stories do
+      get 'page/:page', action: :index, on: :collection
+    end
+
+    resources :profiles do
+      get 'page/:page', action: :index, on: :collection
+    end
+
+    resources :comments do
+      get 'page/:page', action: :index, on: :collection
+    end
+  end
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
