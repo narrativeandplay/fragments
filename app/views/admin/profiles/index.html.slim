@@ -1,0 +1,29 @@
+.row
+  .large-12.columns
+    h1 Profiles
+
+.row
+  .large-12.columns
+    table[width="100%" style="table-layout: fixed" ]
+      thead
+        tr
+          th ID
+          th User
+          th Pen name
+          th Description
+          th
+      tbody
+        - @profiles.each do |profile|
+          tr
+            td = profile.id
+            td = link_to profile.user.username, admin_user_path(profile.user)
+            td = profile.pen_name
+            td[style="word-wrap: break-word"] = profile.description
+            td
+              i.fi-eye> View
+              i.fi-pencil> Edit
+              i.fi-x> Delete
+
+.row
+  .large-12.columns
+    = paginate @profiles

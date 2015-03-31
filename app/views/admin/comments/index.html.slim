@@ -1,0 +1,29 @@
+.row
+  .large-12.columns
+    h1 Comment
+
+.row
+  .large-12.columns
+    table[width="100%" style="table-layout: fixed" ]
+      thead
+        tr
+          th ID
+          th Text
+          th User
+          th Story
+          th
+      tbody
+        - @comments.each do |comment|
+          tr
+            td = comment.id
+            td[style="word-wrap: break-word"] = comment.text
+            td = link_to comment.user.username, admin_user_path(comment.user)
+            td = link_to comment.story.title, admin_story_path(comment.story)
+            td
+              i.fi-eye> View
+              i.fi-pencil> Edit
+              i.fi-x> Delete
+
+.row
+  .large-12.columns
+    = paginate @comments

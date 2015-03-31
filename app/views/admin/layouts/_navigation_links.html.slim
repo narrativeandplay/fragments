@@ -1,0 +1,11 @@
+/ add navigation links to this file
+- if user_signed_in?
+  li.has-dropdown.not-click
+    a[href="#" ]
+      = gravatar_for(current_user, size: 25)
+      | #{current_user.username}
+    ul.dropdown
+      li = link_to 'Home', root_path
+      li = link_to 'Stories', stories_path
+      li.divider
+      li = link_to 'Logout', destroy_user_session_path, method: :delete

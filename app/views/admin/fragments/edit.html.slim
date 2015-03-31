@@ -1,0 +1,13 @@
+.row
+  .large-12.columns
+    h1 Edit Fragment
+
+.row
+  .large-12.columns
+    = form_for [:admin, @fragment] do |f|
+      = f.label :story, "Story: #{@fragment.story.title}"
+      = f.label :author, "Author: #{@fragment.author.profile.pen_name}"
+      = f.label :content, "Content:"
+      = f.cktext_area :content, id: 'edit_form', ckeditor: { skin: 'office2013'}
+      = f.datetime_local_field :created_at
+      = f.submit class: 'small radius button', data: { 'disable-with' => 'Updating...' }
