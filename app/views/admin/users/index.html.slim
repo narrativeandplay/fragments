@@ -1,0 +1,29 @@
+.row
+  .large-12.columns
+    h1 Users
+
+.row
+  .large-12.columns
+    table[width="100%"]
+      thead
+        tr
+          th ID
+          th Username
+          th Email
+          th Admin?
+          th
+      tbody
+        - @users.each do |user|
+          tr
+            td = user.id
+            td = user.username
+            td = user.email
+            td = user.admin? ? 'Yes' : 'No'
+            td
+              i.fi-eye> View
+              i.fi-pencil> Edit
+              i.fi-x> Delete
+
+.row
+  .large-12.columns
+    = paginate @users

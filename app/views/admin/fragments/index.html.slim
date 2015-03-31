@@ -1,0 +1,36 @@
+.row
+  .large-12.columns
+    h1 Fragments
+
+.row
+  .large-12.columns
+    table[width="100%" style="table-layout:fixed"]
+      thead
+        tr
+          th[width="5%"] ID
+          th[width="50%"] Content
+          th Author
+          th Story
+          th Parent
+          th
+      tbody
+        - @fragments.each do |fragment|
+          tr
+            td = fragment.id
+            td[width="50%" style="overflow-wrap: break-word; word-wrap: break-word"] = fragment.content
+            td = link_to fragment.author.username, admin_user_path(fragment.author)
+            td = link_to fragment.story.title, admin_story_path(fragment.story)
+            td = fragment.parent ? link_to("Fragment ##{fragment.parent.id}", admin_fragment_path(fragment.parent)) : "None"
+            td
+              a[href=admin_fragment_path(fragment.id)]
+                i.fi-eye> View
+              br
+              a[href=edit_admin_fragment_path(fragment.id)]
+                i.fi-pencil> Edit
+              br
+              a[href=admin_fragment_path(fragment.id) data-method='delete']
+                i.fi-x> Delete
+
+.row
+  .large-12.columns
+    = paginate @fragments

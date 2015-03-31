@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require foundation
+//= require webshims/polyfiller
 //= require ckeditor/init
 //= require d3
 //= require js-routes
@@ -27,4 +28,22 @@ $(document).on('page:change', function(){
             open_method: 'move' // Sets method in which offcanvas opens, can also be 'overlap'
         }
     });
+});
+
+$.webshims.setOptions("forms-ext", {
+    "widgets": {
+        "popover": {
+            "position": {
+                "my": "left middle",
+                "at": "right middle"
+            }
+        }
+    }
+});
+
+$.webshims.setOptions('basePath', '/assets/webshims/shims/');
+$.webshims.polyfill();
+
+$(document).on("page:load",function() {
+    $(this).updatePolyfill()
 });

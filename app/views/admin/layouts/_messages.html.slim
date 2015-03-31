@@ -1,0 +1,6 @@
+/ Rails flash messages styled for Zurb Foundation
+- flash.each do |name, msg|
+  - if msg.is_a?(String)
+    div[class="alert-box radius #{name.to_s == :notice.to_s ? "success" : "alert"}" data-alert] 
+      = msg
+      a.close.fi-x[href="#"]

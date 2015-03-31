@@ -1,5 +1,4 @@
 Fragments::Application.routes.draw do
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register'}
   root 'static_pages#home'
 
@@ -17,6 +16,31 @@ Fragments::Application.routes.draw do
 
     resources :fragments, only: [:show, :create, :update] do
       get 'read' => 'stories#read'
+    end
+  end
+
+  namespace :admin do
+    root 'dashboard#dashboard'
+    get 'dashboard'
+
+    resources :users do
+      get 'page/:page', action: :index, on: :collection
+    end
+
+    resources :fragments do
+      get 'page/:page', action: :index, on: :collection
+    end
+
+    resources :stories do
+      get 'page/:page', action: :index, on: :collection
+    end
+
+    resources :profiles do
+      get 'page/:page', action: :index, on: :collection
+    end
+
+    resources :comments do
+      get 'page/:page', action: :index, on: :collection
     end
   end
   

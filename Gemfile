@@ -124,15 +124,15 @@ gem 'jbuilder', '~> 2.0'
 # Use local_time to display times in the client's local time
 gem 'local_time', '~> 1.0'
 
-# Use RailsAdmin for admin pages
-gem 'rails_admin', github: 'narrativeandplay/rails_admin', branch: 'precompile-error-fixes'
-
 # Use moment.js to compute difference between times
 gem 'momentjs-rails', '~> 2.9'
 
 gem 'rails_12factor', group: :production
 
 gem 'html_truncator', '~> 0.4'
+
+# Polyfill for HTML5 forms
+gem 'webshims-rails'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
