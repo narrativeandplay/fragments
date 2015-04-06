@@ -41,7 +41,7 @@ $.webshims.setOptions("forms-ext", {
     }
 });
 
-$.webshims.setOptions('basePath', '/assets/webshims/shims/');
+$.webshims.setOptions('basePath', '/webshims/shims/');
 $.webshims.polyfill();
 
 $(document).on("page:load",function() {
