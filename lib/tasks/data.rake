@@ -21,6 +21,8 @@ namespace :data do
 
       new_story = story_to_clone.dup
 
+      new_story.save!
+
       def clone_fragment(fragment_to_clone, story, parent)
         cloned_fragment = story.fragments.build(parent: parent,
                                                 content: fragment_to_clone.content,
@@ -29,14 +31,12 @@ namespace :data do
 
         fragment_to_clone.facts.each { |fact| cloned_fragment.facts.build(text: fact.text) }
 
-        fragment_to_clone.children.each { |f| clone_fragment f, story, fragment_to_clone }
+        cloned_fragment.save!
+
+        fragment_to_clone.children.each { |f| clone_fragment f, story, cloned_fragment }
       end
 
       clone_fragment fragments_to_clone, new_story, nil
-
-      unless new_story.save
-        new_story.errors.full_messages
-      end
     end
   end
 end
