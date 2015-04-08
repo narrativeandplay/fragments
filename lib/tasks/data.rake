@@ -22,10 +22,12 @@ namespace :data do
       new_story = story_to_clone.dup
 
       def clone_fragment(fragment_to_clone, story, parent)
-        story.fragments.build(parent: parent,
-                              content: fragment_to_clone.content,
-                              created_at: fragment_to_clone.created_at,
-                              author_id: fragment_to_clone.author_id)
+        cloned_fragment = story.fragments.build(parent: parent,
+                                                content: fragment_to_clone.content,
+                                                created_at: fragment_to_clone.created_at,
+                                                author_id: fragment_to_clone.author_id)
+
+        fragment_to_clone.facts.each { |fact| cloned_fragment.facts.build(text: fact.text) }
 
         fragment_to_clone.children.each { |f| clone_fragment f, story, fragment_to_clone }
       end
