@@ -19,8 +19,6 @@ The prototype is currently deployed [here](http://fragments-beta.herokuapp.com/)
 - PostgreSQL (tested on PostgreSQL 9.4.1)
 - [Mina](http://nadarei.co/mina/), if you intend to make use of the example deploy script
 
-Installing these dependencies is beyond the scope of this README; Google should be your friend in this case.
-
 ## Setting up
 
 - Clone this repository (`git clone https://github.com/narrativeandplay/fragments.git`)
