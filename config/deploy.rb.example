@@ -17,7 +17,7 @@ set :branch, 'master'
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
 # They will be linked in the 'deploy:link_shared_paths' step.
-set :shared_paths, ['config/database.yml', 'log']
+set :shared_paths, ['config/database.yml', 'log', 'public/assets/']
 
 # Optional settings:
 set :user, 'deploy'    # Username in the server to SSH to.
@@ -47,6 +47,9 @@ task :setup => :environment do
   queue! %[mkdir -p "#{deploy_to}/shared/config"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/config"]
 
+  queue! %[mkdir -p "#{deploy_to}/shared/public/assets"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/public/assets"]
+
   queue! %[touch "#{deploy_to}/shared/config/database.yml"]
   queue  %[echo "-----> Be sure to edit 'shared/config/database.yml'."]
 end
@@ -61,6 +64,7 @@ task :deploy => :environment do
     invoke :'bundle:install'
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
+    queue %[rake assets:clean]
 
     to :launch do
       queue "touch #{deploy_to}/tmp/restart.txt"
